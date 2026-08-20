@@ -2,15 +2,6 @@
 
 Open `index.html` in a browser to preview the site.
 
-## Replace
-- `YOUR PROJECT` with the project/fundraiser name.
-- Placeholder body copy with the real content.
-- Stats with real numbers.
-- `hello@example.com` with the real contact/donation destination.
-
-## Squarespace
-The visual system can be recreated in Squarespace using normal sections/blocks, while the squiggle can be inserted as inline SVG in a Code Block. The CSS/JS here is also a useful reference for the custom-code portions.
-
 
 ## Theme colours
 All major colours are controlled from the `:root` block at the top of `styles.css`.
