@@ -67,9 +67,14 @@ a {
 }
 
 .brand {
-  font-weight: 800;
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+}
+
+.brand img {
+  display: block;
+  height: 42px;
+  width: auto;
 }
 
 .nav {
