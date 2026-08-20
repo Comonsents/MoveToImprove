@@ -368,7 +368,6 @@ h2 {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 18px;
-  
 }
 
 .feature-card:nth-child(1),
@@ -390,7 +389,7 @@ h2 {
 .feature-card {
   min-height: 430px;
   padding: 24px;
-  padding-left: 15px!important;
+  padding-left: 15px !important;
   border: 1.5px solid var(--theme-text);
   border-radius: 26px;
   display: flex;
