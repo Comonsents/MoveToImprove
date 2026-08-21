@@ -567,6 +567,39 @@ h2 {
     gap: 50px;
   }
 
+  .hero-copy,
+  .intro-grid > *,
+  .section-heading > *,
+  .impact-top > *,
+  .support-grid > * {
+    min-width: 0;
+  }
+
+  .hero h1 span,
+  h2 span {
+    display: inline;
+    background: linear-gradient(
+      transparent 82%,
+      var(--colour-accent-2) 82% 94%,
+      transparent 94%
+    );
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .hero h1 span::after,
+  h2 span::after {
+    display: none;
+  }
+
+  .support-grid h2 span {
+    background: linear-gradient(
+      transparent 82%,
+      var(--colour-accent-3) 82% 94%,
+      transparent 94%
+    );
+  }
+
   .hero {
     padding-top: 105px;
   }
@@ -596,6 +629,7 @@ h2 {
 
   .feature-card {
     min-height: 320px;
+    min-width: 0;
   }
 
   .squiggle-wrap {
@@ -609,11 +643,28 @@ h2 {
 
 @media (max-width: 560px) {
   .hero h1 {
-    font-size: clamp(2.75rem, 12vw, 4.4rem);
+    max-width: 100%;
+    font-size: clamp(2.6rem, 11vw, 3.6rem);
+    line-height: 0.98;
   }
 
   h2 {
-    font-size: clamp(3rem, 16vw, 5rem);
+    max-width: 100%;
+    font-size: clamp(2.25rem, 11vw, 3.15rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    overflow-wrap: break-word;
+  }
+
+  .support-panel h2 {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .feature-card h3 {
+    max-width: 100%;
+    font-size: clamp(1.9rem, 10vw, 2.4rem);
+    line-height: 1;
+    overflow-wrap: anywhere;
   }
 
   .hero-card {
@@ -641,6 +692,12 @@ h2 {
 
   .feature-card:nth-child(n) {
     grid-column: span 1;
+  }
+
+  .button {
+    max-width: 100%;
+    padding-inline: 18px;
+    text-align: center;
   }
 
   .footer {
