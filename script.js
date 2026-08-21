@@ -47,3 +47,11 @@ window.addEventListener("scroll", () => {
     ticking = false;
   });
 }, { passive: true });
+
+// Flip the Take Part cards on tap or keyboard activation.
+document.querySelectorAll(".flip-card-toggle").forEach(card => {
+  card.addEventListener("click", () => {
+    const isFlipped = card.classList.toggle("is-flipped");
+    card.setAttribute("aria-pressed", String(isFlipped));
+  });
+});

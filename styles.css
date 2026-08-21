@@ -59,6 +59,18 @@ body {
   overflow-x: hidden;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 h1,
 h2,
 h3,
@@ -418,28 +430,114 @@ h2 {
 
 .feature-card {
   min-height: 430px;
-  padding: 24px;
-  padding-left: 15px !important;
-  border: 1.5px solid var(--theme-text);
+  padding: 0;
   border-radius: 26px;
+  perspective: 1200px;
+  color: var(--card-colour, var(--colour-white));
+}
+
+.flip-card-toggle {
+  width: 100%;
+  min-height: inherit;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.flip-card-toggle:focus-visible {
+  outline: 4px solid var(--theme-text);
+  outline-offset: 5px;
+}
+
+.flip-card-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: inherit;
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.2, 0.72, 0.22, 1);
+}
+
+.flip-card-toggle.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .flip-card-toggle:hover .flip-card-inner {
+    transform: rotateY(180deg) translateY(-8px);
+  }
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  min-height: inherit;
+  padding: 24px;
+  padding-left: 15px;
+  border: 1.5px solid var(--theme-text);
+  border-radius: inherit;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 220ms ease;
-  color: var(--colour-white);
+  color: inherit;
+  background: var(--card-background);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
 }
 
-
-.feature-card:hover {
-  transform: translateY(-10px) rotate(-2deg);
+.card-back {
+  transform: rotateY(180deg);
 }
 
-.card-a { background: var(--card-1); }
-.card-b { background: var(--card-2); }
-.card-c { background: var(--card-3); color:#ffffff!important; }
-.card-d { background: var(--card-4); }
-.card-e { background: var(--card-5); }
-.card-a { color: var(--colour-charcoal-deep); }
+.activity-icon {
+  align-self: center;
+  width: min(76%, 210px);
+  max-height: 170px;
+  fill: currentColor;
+  overflow: visible;
+}
+
+.activity-icon-community,
+.activity-icon-gym {
+  width: min(60%, 165px);
+}
+
+.card-front-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card-title {
+  display: block;
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: clamp(2.4rem, 4vw, 4.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+.card-flip-hint {
+  max-width: 11ch;
+  font-size: 0.66rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.card-a { --card-background: var(--card-1); --card-colour: var(--colour-charcoal-deep); }
+.card-b { --card-background: var(--card-2); }
+.card-c { --card-background: var(--card-3); }
+.card-d { --card-background: var(--card-4); }
+.card-e { --card-background: var(--card-5); }
 
 .card-number {
   font-size: 0.72rem;
@@ -447,20 +545,14 @@ h2 {
   letter-spacing: 0.12em;
 }
 
-.feature-card h3 {
-  margin-bottom: 10px;
-  font-size: clamp(2.4rem, 4vw, 4.4rem);
-  line-height: 0.92;
-  letter-spacing: -0.05em;
-}
-
-.card-d h3 {
+.card-d .card-title {
   font-size: clamp(2rem, 3.25vw, 3.5rem);
 }
 
-.feature-card p {
+.card-description {
+  display: block;
   max-width: 28ch;
-  margin-bottom: 0;
+  margin-top: 12px;
   font-size: 1rem;
 }
 
@@ -1059,11 +1151,21 @@ h2 {
     font-size: clamp(2rem, 10vw, 2.8rem);
   }
 
-  .feature-card h3 {
+  .feature-card .card-title {
     max-width: 100%;
     font-size: clamp(1.9rem, 10vw, 2.4rem);
     line-height: 1;
     overflow-wrap: anywhere;
+  }
+
+  .card-front-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .card-flip-hint {
+    max-width: none;
+    text-align: left;
   }
 
   .hero-card {
@@ -1164,5 +1266,11 @@ h2 {
 
   .footer-links {
     margin-top: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-card-inner {
+    transition: none;
   }
 }
