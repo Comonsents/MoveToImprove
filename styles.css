@@ -292,14 +292,14 @@ h2 span::after {
   letter-spacing: 0.09em;
 }
 
-.hero-card-shape {
+.hero-card-photo {
+  display: block;
+  width: 100%;
   aspect-ratio: 4 / 3;
   margin: 20px 0;
+  object-fit: cover;
+  object-position: center 60%;
   border-radius: 16px;
-  background:
-    radial-gradient(circle at 30% 30%, var(--colour-accent-1) 0 12%, transparent 13%),
-    radial-gradient(circle at 70% 55%, var(--colour-accent-2) 0 18%, transparent 19%),
-    linear-gradient(135deg, var(--colour-accent-4), var(--colour-accent-3));
 }
 
 .hero-card p {
