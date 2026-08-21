@@ -30,6 +30,9 @@
   --theme-squiggle: var(--colour-accent-3);
   --theme-highlight: var(--colour-accent-2);
 
+  /* Replace this URL with the final Get Involved image. */
+  --support-background-image: url("images/get-involved-placeholder.svg");
+
   /* Cards / decorative colours */
   --card-1: var(--colour-accent-4);
   --card-2: var(--colour-accent-3);
@@ -333,7 +336,8 @@ h2 span::after {
   padding-bottom: 95px;
 }
 
-.intro-grid {
+.intro-grid,
+.support-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 80px;
@@ -356,12 +360,14 @@ h2 {
 }
 
 .intro-copy,
+.support-copy,
 .section-heading > p,
 .impact-top > p {
   max-width: 54ch;
 }
 
-.intro-copy p:not(.lead) {
+.intro-copy p:not(.lead),
+.support-copy p {
   font-size: 1rem;
   line-height: 1.7;
 }
@@ -491,42 +497,42 @@ h2 {
   padding: 50px 0 85px;
 }
 
-.support-image-placeholder,
-.support-image {
-  display: block;
-  width: 100%;
-  border-radius: 34px;
-}
-
-.support-image-placeholder {
-  min-height: 360px;
-  aspect-ratio: 16 / 7;
-  padding: 32px;
-  border: 2px dashed rgba(255, 255, 255, 0.72);
-  display: grid;
-  place-content: center;
-  gap: 12px;
+.support-panel {
+  position: relative;
+  isolation: isolate;
   overflow: hidden;
+  padding: 46px;
+  border-radius: 34px;
   color: var(--colour-white);
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(135deg, var(--colour-accent-3), var(--colour-red-deep));
-  background-size: 42px 42px, 42px 42px, auto;
-  box-shadow: inset 0 0 0 12px rgba(0, 0, 0, 0.08);
-  text-align: center;
+  background-color: var(--colour-charcoal-deep);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.72)),
+    var(--support-background-image);
+  background-position: center;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
 }
 
-.support-image-placeholder span {
-  font-family: "Arial Black", Arial, sans-serif;
-  font-size: clamp(2rem, 5vw, 5rem);
-  line-height: 0.95;
+.support-panel .section-label {
+  color: var(--colour-accent-4);
 }
 
-.support-image-placeholder small {
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.support-grid {
+  margin-top: 48px;
+  align-items: end;
+}
+
+.support-grid h2 span::after {
+  background: var(--colour-accent-3);
+}
+
+.support-copy p {
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5);
+}
+
+.support .text-link {
+  color: var(--colour-white);
 }
 
 .footer {
@@ -572,7 +578,8 @@ h2 {
   }
 
   .hero,
-  .intro-grid {
+  .intro-grid,
+  .support-grid {
     grid-template-columns: 1fr;
     gap: 50px;
   }
@@ -580,7 +587,8 @@ h2 {
   .hero-copy,
   .intro-grid > *,
   .section-heading > *,
-  .impact-top > * {
+  .impact-top > *,
+  .support-grid > * {
     min-width: 0;
   }
 
@@ -599,6 +607,14 @@ h2 {
   .hero h1 span::after,
   h2 span::after {
     display: none;
+  }
+
+  .support-grid h2 span {
+    background: linear-gradient(
+      transparent 82%,
+      var(--colour-accent-3) 82% 94%,
+      transparent 94%
+    );
   }
 
   .hero {
@@ -657,6 +673,10 @@ h2 {
     overflow-wrap: break-word;
   }
 
+  .support-panel h2 {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
   .feature-card h3 {
     max-width: 100%;
     font-size: clamp(1.9rem, 10vw, 2.4rem);
@@ -678,15 +698,10 @@ h2 {
     bottom: 7%;
   }
 
-  .support-image-placeholder,
-  .support-image {
+  .support-panel {
+    padding: 28px 22px;
     border-radius: 24px;
-  }
-
-  .support-image-placeholder {
-    min-height: 320px;
-    aspect-ratio: 4 / 3;
-    padding: 24px;
+    background-position: center;
   }
 
   .cards {
