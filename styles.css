@@ -447,6 +447,7 @@ h2 {
   font: inherit;
   text-align: left;
   cursor: pointer;
+  transition: transform 220ms ease;
 }
 
 .flip-card-toggle:focus-visible {
@@ -468,6 +469,10 @@ h2 {
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .flip-card-toggle:hover {
+    transform: translateY(-8px) rotate(-1deg);
+  }
+
   .flip-card-toggle:hover .flip-card-inner {
     transform: rotateY(180deg);
   }
