@@ -4,7 +4,10 @@ const sectionColors = [
   { selector: "#hero", color: "#D92525" },
   { selector: "#about", color: "#F2AC29" },
   { selector: "#work", color: "#326A33" },
+  { selector: "#events", color: "#D92525" },
+  { selector: "#flagship", color: "#1E6196" },
   { selector: "#impact", color: "#1E6196" },
+  { selector: "#partners", color: "#326A33" },
   { selector: "#support", color: "#3F3F40" }
 ];
 
