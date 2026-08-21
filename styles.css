@@ -447,8 +447,7 @@ h2 {
   font: inherit;
   text-align: left;
   cursor: pointer;
-  box-shadow: 8px 8px 0 var(--card-shadow);
-  transition: transform 220ms ease, box-shadow 220ms ease;
+  transition: transform 220ms ease;
 }
 
 .flip-card-toggle:focus-visible {
@@ -469,14 +468,9 @@ h2 {
   transform: rotateY(180deg);
 }
 
-.flip-card-toggle.is-flipped {
-  box-shadow: 10px 10px 0 var(--card-shadow);
-}
-
 @media (hover: hover) and (pointer: fine) {
   .flip-card-toggle:hover {
     transform: translateY(-8px) rotate(-1deg);
-    box-shadow: 12px 12px 0 var(--card-shadow);
   }
 
   .flip-card-toggle:hover .flip-card-inner {
@@ -533,11 +527,11 @@ h2 {
   letter-spacing: -0.05em;
 }
 
-.card-a { --card-background: var(--card-1); --card-colour: var(--colour-charcoal-deep); --card-shadow: var(--colour-gold-deep); }
-.card-b { --card-background: var(--card-2); --card-shadow: var(--colour-red-deep); }
-.card-c { --card-background: var(--card-3); --card-shadow: var(--colour-charcoal-deep); }
-.card-d { --card-background: var(--card-4); --card-shadow: var(--colour-green-deep); }
-.card-e { --card-background: var(--card-5); --card-shadow: var(--colour-blue-deep); }
+.card-a { --card-background: var(--card-1); --card-colour: var(--colour-charcoal-deep); }
+.card-b { --card-background: var(--card-2); }
+.card-c { --card-background: var(--card-3); }
+.card-d { --card-background: var(--card-4); }
+.card-e { --card-background: var(--card-5); }
 
 .card-number {
   font-size: 0.72rem;
