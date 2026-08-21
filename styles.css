@@ -496,8 +496,8 @@ h2 {
 }
 
 .events-band {
-  color: var(--colour-white);
-  background: #151515;
+  color: var(--theme-text);
+  background: transparent;
 }
 
 .events {
@@ -525,7 +525,7 @@ h2 {
 .events-heading p {
   max-width: 52ch;
   margin-bottom: 0;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--theme-text);
   font-size: 1.05rem;
   line-height: 1.6;
 }
@@ -533,7 +533,7 @@ h2 {
 .event-cards {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  gap: 18px;
 }
 
 .event-card {
@@ -542,13 +542,49 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #252525;
-  border-top: 5px solid #545454;
+  color: var(--colour-white);
+  background: var(--colour-accent-2);
+  border: 1.5px solid var(--theme-text);
+  border-radius: 26px;
+  box-shadow: 8px 8px 0 var(--colour-blue-deep);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.event-card:hover {
+  transform: translateY(-8px) rotate(-1deg);
+  box-shadow: 12px 12px 0 var(--colour-blue-deep);
+}
+
+.event-card:nth-child(1) {
+  color: var(--colour-charcoal-deep);
+  background: var(--colour-accent-4);
+  box-shadow: 8px 8px 0 var(--colour-gold-deep);
+}
+
+.event-card:nth-child(1):hover {
+  box-shadow: 12px 12px 0 var(--colour-gold-deep);
+}
+
+.event-card:nth-child(2) {
+  background: var(--colour-accent-2);
+}
+
+.event-card:nth-child(4) {
+  background: var(--colour-accent-5);
+  box-shadow: 8px 8px 0 var(--colour-green-deep);
+}
+
+.event-card:nth-child(4):hover {
+  box-shadow: 12px 12px 0 var(--colour-green-deep);
 }
 
 .event-card-featured {
   background: var(--colour-accent-3);
-  border-top-color: var(--colour-accent-3);
+  box-shadow: 8px 8px 0 var(--colour-red-deep);
+}
+
+.event-card-featured:hover {
+  box-shadow: 12px 12px 0 var(--colour-red-deep);
 }
 
 .event-meta {
@@ -565,7 +601,14 @@ h2 {
 .event-tag {
   padding: 8px 10px;
   background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
   white-space: nowrap;
+}
+
+.event-card:nth-child(1) .event-tag {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.22);
 }
 
 .event-card h3 {
@@ -578,13 +621,13 @@ h2 {
 
 .event-card p {
   margin-bottom: 0;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.86);
   font-size: 0.88rem;
   line-height: 1.55;
 }
 
-.event-card-featured p {
-  color: var(--colour-white);
+.event-card:nth-child(1) p {
+  color: var(--colour-charcoal-deep);
 }
 
 .flagship {
@@ -653,15 +696,17 @@ h2 {
 
 .flagship-button {
   gap: 28px;
-  min-height: 64px;
+  min-height: 58px;
   padding-inline: 26px;
-  border-radius: 0;
+  border-radius: 999px;
   color: var(--colour-white);
   background: var(--colour-accent-3);
+  box-shadow: 5px 5px 0 var(--colour-red-deep);
 }
 
 .flagship-button:hover {
-  transform: translateY(-3px);
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--colour-red-deep);
 }
 
 .flagship-visual {
@@ -676,6 +721,10 @@ h2 {
     var(--flagship-background-image);
   background-position: center;
   background-size: cover;
+  border: 1.5px solid var(--theme-text);
+  border-radius: 28px;
+  box-shadow: 14px 14px 0 var(--colour-accent-2);
+  overflow: hidden;
 }
 
 .flagship-visual strong {
@@ -746,8 +795,7 @@ h2 {
 .partner-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid rgba(23, 23, 23, 0.18);
-  border-left: 1px solid rgba(23, 23, 23, 0.18);
+  gap: 16px;
 }
 
 .partner-mark {
@@ -755,12 +803,44 @@ h2 {
   padding: 22px;
   display: grid;
   place-items: center;
-  border-right: 1px solid rgba(23, 23, 23, 0.18);
-  border-bottom: 1px solid rgba(23, 23, 23, 0.18);
+  background: var(--colour-white);
+  border: 1.5px solid var(--theme-text);
+  border-radius: 20px;
+  box-shadow: 6px 6px 0 var(--colour-accent-5);
   font-family: "Arial Black", Arial, sans-serif;
   font-size: clamp(0.95rem, 1.4vw, 1.25rem);
   text-align: center;
   text-transform: uppercase;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.partner-mark:hover {
+  transform: translate(-2px, -2px) rotate(-1deg);
+  box-shadow: 9px 9px 0 var(--colour-accent-5);
+}
+
+.partner-mark:nth-child(4n + 2) {
+  box-shadow: 6px 6px 0 var(--colour-accent-2);
+}
+
+.partner-mark:nth-child(4n + 2):hover {
+  box-shadow: 9px 9px 0 var(--colour-accent-2);
+}
+
+.partner-mark:nth-child(4n + 3) {
+  box-shadow: 6px 6px 0 var(--colour-accent-4);
+}
+
+.partner-mark:nth-child(4n + 3):hover {
+  box-shadow: 9px 9px 0 var(--colour-accent-4);
+}
+
+.partner-mark:nth-child(4n + 4) {
+  box-shadow: 6px 6px 0 var(--colour-accent-3);
+}
+
+.partner-mark:nth-child(4n + 4):hover {
+  box-shadow: 9px 9px 0 var(--colour-accent-3);
 }
 
 .partner-mark:first-child {
@@ -1041,6 +1121,7 @@ h2 {
   .event-card {
     min-height: 255px;
     padding: 24px;
+    box-shadow: 6px 6px 0 var(--colour-blue-deep);
   }
 
   .event-meta {
@@ -1055,6 +1136,7 @@ h2 {
   .flagship-visual {
     min-height: 410px;
     padding: 24px;
+    box-shadow: 8px 8px 0 var(--colour-accent-2);
   }
 
   .event-details > div {
@@ -1063,6 +1145,7 @@ h2 {
 
   .partner-mark {
     min-height: 100px;
+    box-shadow: 5px 5px 0 var(--colour-accent-5);
   }
 
   .feature-card:nth-child(n) {
