@@ -5,24 +5,29 @@
 :root {
   /* ===== THEME COLOURS =====
      Change these values to retheme the entire site. */
-  --colour-ink: #171717;
-  --colour-paper: #f8f5ef;
+  --colour-ink: #3f3f40;
+  --colour-paper: #ffffff;
   --colour-white: #ffffff;
 
-  --colour-accent-1: #3F3F40; /* pink */
-  --colour-accent-2: #1E6196; /* yellow */
-  --colour-accent-3: #D92525; /* blue */
-  --colour-accent-4: #F2AC29; /* green */
-  --colour-accent-5: #326A33; /* orange */
+  --colour-accent-1: #3f3f40; /* charcoal */
+  --colour-accent-2: #1e6196; /* blue */
+  --colour-accent-3: #d92525; /* red */
+  --colour-accent-4: #f2ac29; /* gold */
+  --colour-accent-5: #326a33; /* green */
+  --colour-charcoal-deep: #000000;
+  --colour-blue-deep: #003565;
+  --colour-red-deep: #bf2626;
+  --colour-gold-deep: #c08300;
+  --colour-green-deep: #15511e;
 
   /* Semantic theme roles */
   --theme-text: var(--colour-ink);
   --theme-background: var(--colour-paper);
-  --theme-header-background: var(--theme-header-background);
-  --theme-primary: var(--colour-ink);
+  --theme-header-background: rgba(255, 255, 255, 0.88);
+  --theme-primary: var(--colour-accent-3);
   --theme-on-primary: var(--colour-white);
   --theme-line: var(--colour-ink);
-  --theme-squiggle: var(--colour-accent-1);
+  --theme-squiggle: var(--colour-accent-3);
   --theme-highlight: var(--colour-accent-2);
 
   /* Cards / decorative colours */
@@ -46,6 +51,16 @@ body {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
   overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+.button,
+.eyebrow,
+.section-label,
+.stat strong {
+  font-family: "Arial Black", Arial, sans-serif;
 }
 
 a {
@@ -131,7 +146,7 @@ main {
 
 #squigglePath {
   fill: none;
-  stroke: var(--colour-accent-1);
+  stroke: var(--theme-squiggle);
   stroke-width: 10;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -167,9 +182,10 @@ p {
 .hero h1 {
   margin: 18px 0 24px;
   max-width: 800px;
-  font-size: clamp(4rem, 9vw, 8.8rem);
-  line-height: 0.88;
-  letter-spacing: -0.065em;
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
 }
 
 .hero h1 span,
@@ -198,6 +214,12 @@ h2 span::after {
   line-height: 1.65;
 }
 
+.hero-participation {
+  max-width: 600px;
+  margin-top: 18px;
+  font-weight: 800;
+}
+
 .hero-actions {
   display: flex;
   align-items: center;
@@ -218,14 +240,14 @@ h2 span::after {
 }
 
 .button-primary {
-  background: var(--theme-text);
+  background: var(--theme-primary);
   color: var(--theme-on-primary);
-  box-shadow: 5px 5px 0 var(--colour-accent-1);
+  box-shadow: 5px 5px 0 var(--colour-red-deep);
 }
 
 .button-primary:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0 var(--colour-accent-1);
+  box-shadow: 8px 8px 0 var(--colour-red-deep);
 }
 
 .text-link,
@@ -324,6 +346,7 @@ h2 {
   font-size: clamp(3rem, 6vw, 6.7rem);
   line-height: 0.92;
   letter-spacing: -0.06em;
+  text-transform: uppercase;
 }
 
 .lead {
@@ -396,7 +419,7 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   transition: transform 220ms ease;
-  color: var(--colour-paper);
+  color: var(--colour-white);
 }
 
 
@@ -409,6 +432,7 @@ h2 {
 .card-c { background: var(--card-3); color:#ffffff!important; }
 .card-d { background: var(--card-4); }
 .card-e { background: var(--card-5); }
+.card-a { color: var(--colour-charcoal-deep); }
 
 .card-number {
   font-size: 0.72rem;
@@ -469,12 +493,12 @@ h2 {
 .support-panel {
   padding: 46px;
   border-radius: 34px;
-  background: var(--theme-text);
+  background: var(--colour-charcoal-deep);
   color: var(--theme-on-primary);
 }
 
 .support-panel .section-label {
-  color: var(--colour-accent-2);
+  color: var(--colour-accent-4);
 }
 
 .support-grid {
@@ -483,7 +507,7 @@ h2 {
 }
 
 .support-grid h2 span::after {
-  background: var(--colour-accent-1);
+  background: var(--colour-accent-3);
 }
 
 .support-copy p {
@@ -585,7 +609,7 @@ h2 {
 
 @media (max-width: 560px) {
   .hero h1 {
-    font-size: clamp(3.4rem, 19vw, 6rem);
+    font-size: clamp(2.75rem, 12vw, 4.4rem);
   }
 
   h2 {
