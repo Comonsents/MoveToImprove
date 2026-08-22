@@ -34,10 +34,12 @@ sections.forEach(({ el, color }) => {
   observer.observe(el);
 });
 
-// Small parallax nudge: the line drifts very slightly as the page scrolls.
+// Small parallax nudge: the line drifts very slightly as the page scrolls,
+// unless the visitor has requested reduced motion.
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 let ticking = false;
 
-window.addEventListener("scroll", () => {
+const updateSquiggleParallax = () => {
   if (ticking) return;
   ticking = true;
 
@@ -46,7 +48,22 @@ window.addEventListener("scroll", () => {
     path.style.transform = `translateY(${offset}px)`;
     ticking = false;
   });
-}, { passive: true });
+};
+
+const syncParallaxPreference = () => {
+  window.removeEventListener("scroll", updateSquiggleParallax);
+
+  if (reducedMotionQuery.matches) {
+    path.style.transform = "none";
+    return;
+  }
+
+  window.addEventListener("scroll", updateSquiggleParallax, { passive: true });
+  updateSquiggleParallax();
+};
+
+syncParallaxPreference();
+reducedMotionQuery.addEventListener("change", syncParallaxPreference);
 
 // Flip the Take Part cards on tap or keyboard activation.
 document.querySelectorAll(".flip-card-toggle").forEach(card => {

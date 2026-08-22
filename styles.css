@@ -1,3 +1,5 @@
+/* ==================== Global foundations ==================== */
+
 * {
   box-sizing: border-box;
 }
@@ -26,9 +28,7 @@
   --theme-header-background: rgba(255, 255, 255, 0.88);
   --theme-primary: var(--colour-accent-3);
   --theme-on-primary: var(--colour-white);
-  --theme-line: var(--colour-ink);
   --theme-squiggle: var(--colour-accent-3);
-  --theme-highlight: var(--colour-accent-2);
 
   /* Replace this URL with the final Get Involved image. */
   --support-background-image: url("images/get_involved.jpeg");
@@ -44,6 +44,7 @@
   --card-5: var(--colour-accent-2);
 
   --max: 1240px;
+  --section-padding: 85px 0 100px;
 }
 
 html {
@@ -90,6 +91,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/* ==================== Header and navigation ==================== */
 
 .site-header {
   position: fixed;
@@ -138,6 +141,8 @@ a {
   border-radius: 999px;
 }
 
+/* ==================== Shared layout and decoration ==================== */
+
 main {
   position: relative;
   isolation: isolate;
@@ -176,6 +181,8 @@ main {
   vector-effect: non-scaling-stroke;
   transition: stroke 500ms ease;
 }
+
+/* ==================== Hero ==================== */
 
 .hero {
   min-height: 100svh;
@@ -324,32 +331,7 @@ h2 span::after {
   font-size: 0.95rem;
 }
 
-.sticker {
-  position: absolute;
-  z-index: 2;
-  padding: 13px 16px;
-  border: 1.5px solid var(--theme-text);
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.sticker-one {
-  top: 14%;
-  left: 0;
-  background: var(--colour-accent-1);
-  transform: rotate(-8deg);
-}
-
-.sticker-two {
-  right: -3%;
-  bottom: 12%;
-  background: var(--colour-accent-2);
-  transform: rotate(7deg);
-  text-align: center;
-}
+/* ==================== About ==================== */
 
 .intro {
   padding-top: 90px;
@@ -397,8 +379,10 @@ h2 {
   margin-top: 18px;
 }
 
+/* ==================== Take Part ==================== */
+
 .work {
-  padding: 85px 0 100px;
+  padding: var(--section-padding);
 }
 
 .section-heading,
@@ -416,14 +400,6 @@ h2 {
   gap: 18px;
 }
 
-.feature-card:nth-child(1),
-.feature-card:nth-child(2),
-.feature-card:nth-child(3),
-.feature-card:nth-child(4),
-.feature-card:nth-child(5) {
-  grid-column: span 2;
-}
-
 .feature-card:nth-child(4) {
   grid-column: 2 / span 2;
 }
@@ -433,6 +409,7 @@ h2 {
 }
 
 .feature-card {
+  grid-column: span 2;
   min-height: 430px;
   padding: 0;
   border-radius: 30px;
@@ -479,6 +456,11 @@ h2 {
 
   .flip-card-toggle:hover .flip-card-inner {
     transform: rotateY(180deg);
+  }
+
+  .flip-card-toggle:hover .card-front::before {
+    width: 56px;
+    height: 56px;
   }
 }
 
@@ -539,13 +521,6 @@ h2 {
   transform: rotate(-24deg);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .flip-card-toggle:hover .card-front::before {
-    width: 56px;
-    height: 56px;
-  }
-}
-
 .activity-icon {
   align-self: center;
   width: min(76%, 210px);
@@ -595,8 +570,10 @@ h2 {
   font-size: 2rem;
 }
 
+/* ==================== Impact ==================== */
+
 .impact {
-  padding: 85px 0 100px;
+  padding: var(--section-padding);
 }
 
 .numbered-label {
@@ -621,10 +598,7 @@ h2 {
   letter-spacing: 0;
 }
 
-.events-band {
-  color: var(--theme-text);
-  background: transparent;
-}
+/* ==================== Events ==================== */
 
 .events {
   padding: 96px 0 104px;
@@ -663,6 +637,8 @@ h2 {
 }
 
 .event-card {
+  --shadow-colour: var(--colour-accent-2);
+
   min-height: 350px;
   padding: 28px;
   display: flex;
@@ -672,45 +648,32 @@ h2 {
   background: var(--colour-blue-deep);
   border: 1.5px solid var(--theme-text);
   border-radius: 26px;
-  box-shadow: 8px 8px 0 var(--colour-accent-2);
+  box-shadow: 8px 8px 0 var(--shadow-colour);
   transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
 .event-card:hover {
   transform: translateY(-8px) rotate(-1deg);
-  box-shadow: 12px 12px 0 var(--colour-accent-2);
+  box-shadow: 12px 12px 0 var(--shadow-colour);
 }
 
 .event-card:nth-child(1) {
+  --shadow-colour: var(--colour-accent-4);
+
   color: var(--colour-charcoal-deep);
   background: var(--colour-gold-deep);
-  box-shadow: 8px 8px 0 var(--colour-accent-4);
-}
-
-.event-card:nth-child(1):hover {
-  box-shadow: 12px 12px 0 var(--colour-accent-4);
-}
-
-.event-card:nth-child(2) {
-  background: var(--colour-blue-deep);
 }
 
 .event-card:nth-child(4) {
-  background: var(--colour-green-deep);
-  box-shadow: 8px 8px 0 var(--colour-accent-5);
-}
+  --shadow-colour: var(--colour-accent-5);
 
-.event-card:nth-child(4):hover {
-  box-shadow: 12px 12px 0 var(--colour-accent-5);
+  background: var(--colour-green-deep);
 }
 
 .event-card-featured {
-  background: var(--colour-red-deep);
-  box-shadow: 8px 8px 0 var(--colour-accent-3);
-}
+  --shadow-colour: var(--colour-accent-3);
 
-.event-card-featured:hover {
-  box-shadow: 12px 12px 0 var(--colour-accent-3);
+  background: var(--colour-red-deep);
 }
 
 .event-meta {
@@ -755,6 +718,8 @@ h2 {
 .event-card:nth-child(1) p {
   color: var(--colour-charcoal-deep);
 }
+
+/* ==================== Flagship ==================== */
 
 .flagship {
   padding: 105px 0;
@@ -892,6 +857,8 @@ h2 {
   font-weight: 700;
 }
 
+/* ==================== Partners ==================== */
+
 .partners {
   padding: 95px 0 110px;
 }
@@ -925,6 +892,8 @@ h2 {
 }
 
 .partner-mark {
+  --shadow-colour: var(--colour-accent-5);
+
   min-height: 135px;
   padding: 22px;
   display: grid;
@@ -932,7 +901,7 @@ h2 {
   background: var(--colour-white);
   border: 1.5px solid var(--theme-text);
   border-radius: 20px;
-  box-shadow: 6px 6px 0 var(--colour-accent-5);
+  box-shadow: 6px 6px 0 var(--shadow-colour);
   font-family: "Arial Black", Arial, sans-serif;
   font-size: clamp(0.95rem, 1.4vw, 1.25rem);
   text-align: center;
@@ -942,31 +911,19 @@ h2 {
 
 .partner-mark:hover {
   transform: translate(-2px, -2px) rotate(-1deg);
-  box-shadow: 9px 9px 0 var(--colour-accent-5);
+  box-shadow: 9px 9px 0 var(--shadow-colour);
 }
 
 .partner-mark:nth-child(4n + 2) {
-  box-shadow: 6px 6px 0 var(--colour-accent-2);
-}
-
-.partner-mark:nth-child(4n + 2):hover {
-  box-shadow: 9px 9px 0 var(--colour-accent-2);
+  --shadow-colour: var(--colour-accent-2);
 }
 
 .partner-mark:nth-child(4n + 3) {
-  box-shadow: 6px 6px 0 var(--colour-accent-4);
-}
-
-.partner-mark:nth-child(4n + 3):hover {
-  box-shadow: 9px 9px 0 var(--colour-accent-4);
+  --shadow-colour: var(--colour-accent-4);
 }
 
 .partner-mark:nth-child(4n + 4) {
-  box-shadow: 6px 6px 0 var(--colour-accent-3);
-}
-
-.partner-mark:nth-child(4n + 4):hover {
-  box-shadow: 9px 9px 0 var(--colour-accent-3);
+  --shadow-colour: var(--colour-accent-3);
 }
 
 .partner-mark:first-child {
@@ -978,6 +935,8 @@ h2 {
   font-size: 0.72rem;
   opacity: 0.66;
 }
+
+/* ==================== Support ==================== */
 
 .support {
   padding: 50px 0 85px;
@@ -1021,6 +980,8 @@ h2 {
   color: var(--colour-white);
 }
 
+/* ==================== Footer ==================== */
+
 .footer {
   padding: 28px 32px;
   display: flex;
@@ -1044,6 +1005,8 @@ h2 {
   gap: 18px;
   flex-wrap: wrap;
 }
+
+/* ==================== Responsive layouts ==================== */
 
 @media (max-width: 900px) {
   .site-header {
@@ -1196,16 +1159,6 @@ h2 {
     width: 92%;
   }
 
-  .sticker-one {
-    top: 6%;
-    left: -2%;
-  }
-
-  .sticker-two {
-    right: -1%;
-    bottom: 7%;
-  }
-
   .support-panel {
     padding: 28px 22px;
     border-radius: 24px;
@@ -1247,7 +1200,7 @@ h2 {
   .event-card {
     min-height: 255px;
     padding: 24px;
-    box-shadow: 6px 6px 0 var(--colour-accent-2);
+    box-shadow: 6px 6px 0 var(--shadow-colour);
   }
 
   .event-meta {
@@ -1271,11 +1224,7 @@ h2 {
 
   .partner-mark {
     min-height: 100px;
-    box-shadow: 5px 5px 0 var(--colour-accent-5);
-  }
-
-  .feature-card:nth-child(n) {
-    grid-column: span 1;
+    box-shadow: 5px 5px 0 var(--shadow-colour);
   }
 
   .button {
@@ -1294,7 +1243,26 @@ h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .flip-card-inner {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .nav a,
+  .button,
+  #squigglePath,
+  .flip-card-toggle,
+  .flip-card-inner,
+  .card-front::before,
+  .event-card,
+  .partner-mark {
     transition: none;
+  }
+
+  .nav a:hover,
+  .button:hover,
+  .flip-card-toggle:hover,
+  .event-card:hover,
+  .partner-mark:hover {
+    transform: none;
   }
 }
