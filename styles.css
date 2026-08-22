@@ -510,6 +510,42 @@ h2 {
   padding: 32px;
 }
 
+.card-front::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.32) 0 47%,
+    rgba(0, 0, 0, 0.18) 48% 50%,
+    transparent 51%
+  );
+  pointer-events: none;
+  transition: width 180ms ease, height 180ms ease;
+}
+
+.card-front::after {
+  content: "↻";
+  position: absolute;
+  left: 8px;
+  bottom: 7px;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: none;
+  transform: rotate(-24deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .flip-card-toggle:hover .card-front::before {
+    width: 56px;
+    height: 56px;
+  }
+}
+
 .activity-icon {
   align-self: center;
   width: min(76%, 210px);
