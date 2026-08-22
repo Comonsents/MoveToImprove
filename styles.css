@@ -669,48 +669,48 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   color: var(--colour-white);
-  background: var(--colour-accent-2);
+  background: var(--colour-blue-deep);
   border: 1.5px solid var(--theme-text);
   border-radius: 26px;
-  box-shadow: 8px 8px 0 var(--colour-blue-deep);
+  box-shadow: 8px 8px 0 var(--colour-accent-2);
   transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
 .event-card:hover {
   transform: translateY(-8px) rotate(-1deg);
-  box-shadow: 12px 12px 0 var(--colour-blue-deep);
+  box-shadow: 12px 12px 0 var(--colour-accent-2);
 }
 
 .event-card:nth-child(1) {
   color: var(--colour-charcoal-deep);
-  background: var(--colour-accent-4);
-  box-shadow: 8px 8px 0 var(--colour-gold-deep);
+  background: var(--colour-gold-deep);
+  box-shadow: 8px 8px 0 var(--colour-accent-4);
 }
 
 .event-card:nth-child(1):hover {
-  box-shadow: 12px 12px 0 var(--colour-gold-deep);
+  box-shadow: 12px 12px 0 var(--colour-accent-4);
 }
 
 .event-card:nth-child(2) {
-  background: var(--colour-accent-2);
+  background: var(--colour-blue-deep);
 }
 
 .event-card:nth-child(4) {
-  background: var(--colour-accent-5);
-  box-shadow: 8px 8px 0 var(--colour-green-deep);
+  background: var(--colour-green-deep);
+  box-shadow: 8px 8px 0 var(--colour-accent-5);
 }
 
 .event-card:nth-child(4):hover {
-  box-shadow: 12px 12px 0 var(--colour-green-deep);
+  box-shadow: 12px 12px 0 var(--colour-accent-5);
 }
 
 .event-card-featured {
-  background: var(--colour-accent-3);
-  box-shadow: 8px 8px 0 var(--colour-red-deep);
+  background: var(--colour-red-deep);
+  box-shadow: 8px 8px 0 var(--colour-accent-3);
 }
 
 .event-card-featured:hover {
-  box-shadow: 12px 12px 0 var(--colour-red-deep);
+  box-shadow: 12px 12px 0 var(--colour-accent-3);
 }
 
 .event-meta {
@@ -1247,7 +1247,7 @@ h2 {
   .event-card {
     min-height: 255px;
     padding: 24px;
-    box-shadow: 6px 6px 0 var(--colour-blue-deep);
+    box-shadow: 6px 6px 0 var(--colour-accent-2);
   }
 
   .event-meta {
