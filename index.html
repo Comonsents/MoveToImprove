@@ -99,7 +99,7 @@
       <div class="cards">
         <article class="feature-card card-a">
           <h3 class="sr-only">Yoga</h3>
-          <button class="flip-card-toggle" type="button" aria-pressed="false" aria-label="Yoga. Move gently, breathe, stretch and make space to reconnect with yourself and others. Press to flip the card.">
+          <button class="flip-card-toggle" type="button" aria-expanded="false" aria-controls="expanded-card-dialog" aria-label="Yoga. Move gently, breathe, stretch and make space to reconnect with yourself and others. Press to expand the card.">
             <span class="flip-card-inner" aria-hidden="true">
               <span class="card-face card-front">
                 <img class="activity-icon" src="images/logos/Icon_White_Yoga.svg" alt="Yoga">
@@ -107,7 +107,7 @@
               <span class="card-face card-back">
                 <span class="card-number">01 / Yoga</span>
                 <span class="card-back-copy"><span class="card-title">Yoga</span><span class="card-description">Move gently, breathe, stretch and make space to reconnect with yourself and others.</span></span>
-                <span class="card-arrow">↩</span>
+                <span class="card-arrow">↻</span>
               </span>
             </span>
           </button>
@@ -115,7 +115,7 @@
 
         <article class="feature-card card-b">
           <h3 class="sr-only">Run</h3>
-          <button class="flip-card-toggle" type="button" aria-pressed="false" aria-label="Run. Run one loop or six, at your pace, alongside a Wellington community moving for men’s health. Press to flip the card.">
+          <button class="flip-card-toggle" type="button" aria-expanded="false" aria-controls="expanded-card-dialog" aria-label="Run. Run one loop or six, at your pace, alongside a Wellington community moving for men’s health. Press to expand the card.">
             <span class="flip-card-inner" aria-hidden="true">
               <span class="card-face card-front">
                 <img class="activity-icon" src="images/logos/Icon_White_Run.svg" alt="Run">
@@ -123,7 +123,7 @@
               <span class="card-face card-back">
                 <span class="card-number">02 / Run</span>
                 <span class="card-back-copy"><span class="card-title">Run</span><span class="card-description">Run one loop or six, at your pace, alongside a Wellington community moving for men’s health.</span></span>
-                <span class="card-arrow">↩</span>
+                <span class="card-arrow">↻</span>
               </span>
             </span>
           </button>
@@ -131,7 +131,7 @@
 
         <article class="feature-card card-c">
           <h3 class="sr-only">Recover</h3>
-          <button class="flip-card-toggle" type="button" aria-pressed="false" aria-label="Recover. Pause, reset and recover. Looking after yourself is part of the movement, too. Press to flip the card.">
+          <button class="flip-card-toggle" type="button" aria-expanded="false" aria-controls="expanded-card-dialog" aria-label="Recover. Pause, reset and recover. Looking after yourself is part of the movement, too. Press to expand the card.">
             <span class="flip-card-inner" aria-hidden="true">
               <span class="card-face card-front">
                 <img class="activity-icon" src="images/logos/Icon_White_Recover.svg" alt="Recover">
@@ -139,7 +139,7 @@
               <span class="card-face card-back">
                 <span class="card-number">03 / Recover</span>
                 <span class="card-back-copy"><span class="card-title">Recover</span><span class="card-description">Pause, reset and recover. Looking after yourself is part of the movement, too.</span></span>
-                <span class="card-arrow">↩</span>
+                <span class="card-arrow">↻</span>
               </span>
             </span>
           </button>
@@ -147,7 +147,7 @@
 
         <article class="feature-card card-d">
           <h3 class="sr-only">Community</h3>
-          <button class="flip-card-toggle" type="button" aria-pressed="false" aria-label="Community. Volunteer, cheer, share a coffee or start a conversation. Connection is how we improve together. Press to flip the card.">
+          <button class="flip-card-toggle" type="button" aria-expanded="false" aria-controls="expanded-card-dialog" aria-label="Community. Volunteer, cheer, share a coffee or start a conversation. Connection is how we improve together. Press to expand the card.">
             <span class="flip-card-inner" aria-hidden="true">
               <span class="card-face card-front">
                 <img class="activity-icon" src="images/logos/Icon_White_Community.svg" alt="Community">
@@ -155,7 +155,7 @@
               <span class="card-face card-back">
                 <span class="card-number">04 / Community</span>
                 <span class="card-back-copy"><span class="card-title">Community</span><span class="card-description">Volunteer, cheer, share a coffee or start a conversation. Connection is how we improve together.</span></span>
-                <span class="card-arrow">↩</span>
+                <span class="card-arrow">↻</span>
               </span>
             </span>
           </button>
@@ -163,7 +163,7 @@
 
         <article class="feature-card card-e">
           <h3 class="sr-only">Gym</h3>
-          <button class="flip-card-toggle" type="button" aria-pressed="false" aria-label="Gym. Train your way and bring your community with you. Contribution matters more than performance. Press to flip the card.">
+          <button class="flip-card-toggle" type="button" aria-expanded="false" aria-controls="expanded-card-dialog" aria-label="Gym. Train your way and bring your community with you. Contribution matters more than performance. Press to expand the card.">
             <span class="flip-card-inner" aria-hidden="true">
               <span class="card-face card-front">
                 <img class="activity-icon" src="images/logos/Icon_White_Gym.svg" alt="Gym">
@@ -171,12 +171,16 @@
               <span class="card-face card-back">
                 <span class="card-number">05 / Gym</span>
                 <span class="card-back-copy"><span class="card-title">Gym</span><span class="card-description">Train your way and bring your community with you. Contribution matters more than performance.</span></span>
-                <span class="card-arrow">↩</span>
+                <span class="card-arrow">↻</span>
               </span>
             </span>
           </button>
         </article>
       </div>
+
+      <dialog class="expanded-card-dialog" id="expanded-card-dialog">
+        <div class="expanded-card-shell"></div>
+      </dialog>
     </section>
 
     <div class="events-band">
