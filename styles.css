@@ -525,12 +525,6 @@ h2 {
   align-self: center;
   width: min(76%, 210px);
   max-height: 210px;
-  overflow: visible;
-}
-
-.activity-icon-community,
-.activity-icon-gym {
-  width: min(60%, 165px);
 }
 
 .card-title {
