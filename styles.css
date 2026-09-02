@@ -524,8 +524,7 @@ h2 {
 .activity-icon {
   align-self: center;
   width: min(76%, 210px);
-  max-height: 170px;
-  fill: currentColor;
+  max-height: 210px;
   overflow: visible;
 }
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400.52 96">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Arial-Black, 'Arial Black';
+        font-size: 49.97px;
+        font-weight: 800;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-4 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-5 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-6 {
+        letter-spacing: -.03em;
+      }
+    </style>
+  </defs>
+  <text class="cls-1" transform="translate(147.62 36.05)"><tspan x="0" y="0">M</tspan><tspan class="cls-5" x="47.16" y="0">O</tspan><tspan x="86.64" y="0">VE </tspan><tspan class="cls-6" x="178.25" y="0">T</tspan><tspan x="212.64" y="0">O </tspan></text>
+  <text class="cls-1" transform="translate(147.62 96.01)"><tspan x="0" y="0">IMP</tspan><tspan class="cls-3" x="102.69" y="0">R</tspan><tspan class="cls-4" x="140.71" y="0">O</tspan><tspan x="180.24" y="0">VE</tspan></text>
+  <path class="cls-2" d="M122.02,32.68c0,3.25-2.64,5.89-5.89,5.89s-5.89-2.64-5.89-5.89,2.64-5.89,5.89-5.89,5.89,2.64,5.89,5.89"/>
+  <path class="cls-2" d="M110.98,48.15v29.51c0,4.44-3.61,8.05-8.05,8.05s-8.05-3.61-8.05-8.05V18.64c0-10.12-8.23-18.36-18.35-18.36s-18.36,8.23-18.36,18.36v59.02c0,4.44-3.61,8.05-8.05,8.05s-8.05-3.61-8.05-8.05V18.64C42.09,8.52,33.85.28,23.73.28S5.37,8.52,5.37,18.64v21.98c0,2.96-2.41,5.37-5.37,5.37v10.31c8.65,0,15.69-7.04,15.69-15.69v-10.53h0v-11.45c0-4.44,3.61-8.05,8.05-8.05s8.05,3.61,8.05,8.05v59.02c0,10.12,8.23,18.36,18.36,18.36s18.35-8.23,18.35-18.36V18.64c0-4.44,3.61-8.05,8.05-8.05s8.05,3.61,8.05,8.05v59.02c0,10.12,8.23,18.36,18.36,18.36s18.35-8.23,18.35-18.36v-29.51h-10.31Z"/>
+</svg>
