@@ -95,7 +95,6 @@ h3,
 .button,
 .eyebrow,
 .section-label,
-.numbered-label,
 .stat strong {
   font-family: "Arial Black", Arial, sans-serif;
 }
@@ -215,6 +214,10 @@ main {
   text-transform: uppercase;
 }
 
+.section-label {
+  font-size: 0.8rem;
+}
+
 .hero h1,
 h2,
 h3,
@@ -229,26 +232,6 @@ p {
   line-height: 0.94;
   letter-spacing: -0.045em;
   text-transform: uppercase;
-}
-
-.hero h1 span,
-h2 span {
-  position: relative;
-  display: inline-block;
-}
-
-.hero h1 span::after,
-h2 span::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -4px;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--colour-accent-2);
-  transform: rotate(-1.8deg);
-  z-index: -1;
 }
 
 .hero-text {
@@ -269,6 +252,40 @@ h2 span::after {
   flex-wrap: wrap;
   gap: 18px;
   margin-top: 34px;
+}
+
+.hero-impact-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: min(100%, 600px);
+  margin: 30px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--theme-text);
+}
+
+.hero-impact-summary > div {
+  min-width: 0;
+  padding-right: 18px;
+}
+
+.hero-impact-summary > div + div {
+  padding-left: 18px;
+  border-left: 1px solid var(--theme-text);
+}
+
+.hero-impact-summary dt {
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.hero-impact-summary dd {
+  max-width: 18ch;
+  margin: 7px 0 0;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.35;
 }
 
 .button {
@@ -657,28 +674,6 @@ h2 {
   padding: var(--section-padding);
 }
 
-.numbered-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.numbered-label > span {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  color: var(--colour-accent-3);
-  font-size: 0.64rem;
-  letter-spacing: 0;
-}
-
 /* ==================== Events ==================== */
 
 .events {
@@ -787,6 +782,13 @@ h2 {
   line-height: 0.98;
   letter-spacing: -0.035em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 901px) {
+  .event-card:nth-child(2) h3 {
+    font-size: clamp(1.25rem, 1.65vw, 1.8rem);
+  }
 }
 
 .event-card p {
@@ -916,7 +918,7 @@ h2 {
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
@@ -1048,10 +1050,6 @@ h2 {
   align-items: end;
 }
 
-.support-grid h2 span::after {
-  background: var(--colour-accent-3);
-}
-
 .support-copy p {
   color: rgba(255, 255, 255, 0.88);
   text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5);
@@ -1126,31 +1124,6 @@ h2 {
   .flagship-grid > *,
   .partners-heading > * {
     min-width: 0;
-  }
-
-  .hero h1 span,
-  h2 span {
-    display: inline;
-    background: linear-gradient(
-      transparent 82%,
-      var(--colour-accent-2) 82% 94%,
-      transparent 94%
-    );
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-  }
-
-  .hero h1 span::after,
-  h2 span::after {
-    display: none;
-  }
-
-  .support-grid h2 span {
-    background: linear-gradient(
-      transparent 82%,
-      var(--colour-accent-3) 82% 94%,
-      transparent 94%
-    );
   }
 
   .hero {
@@ -1238,6 +1211,41 @@ h2 {
 
   .hero-card {
     width: 92%;
+  }
+
+  .hero-impact-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 28px;
+  }
+
+  .hero-impact-summary > div {
+    padding-right: 10px;
+  }
+
+  .hero-impact-summary > div + div {
+    padding-left: 10px;
+  }
+
+  .hero-impact-summary > div:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .hero-impact-summary > div:nth-child(even) {
+    padding-right: 0;
+  }
+
+  .hero-impact-summary > div:nth-child(-n + 2) {
+    padding-bottom: 14px;
+  }
+
+  .hero-impact-summary > div:nth-child(n + 3) {
+    padding-top: 14px;
+    border-top: 1px solid var(--theme-text);
+  }
+
+  .hero-impact-summary dd {
+    font-size: 0.68rem;
   }
 
   .support-panel {
