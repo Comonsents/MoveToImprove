@@ -4,19 +4,21 @@ Use this list to track website changes over the coming weeks. Add a short descri
 
 ## In progress
 
-- [ ] Finish flip-card updates
-  - [ ] Check keyboard and touch interaction
-  - [ ] Check desktop and mobile layouts
-  - [ ] Confirm there is no horizontal overflow on mobile
-  - [ ] Review card copy, links, and accessibility labels
+- [x] Finish flip-card updates
+  - [x] Check keyboard and touch interaction
+  - [x] Check desktop and mobile layouts
+  - [x] Confirm there is no horizontal overflow on mobile
+  - [x] Review card copy, links, and accessibility labels
 
 ## Next up
 
 - [ ] Update font colour: use grey text instead of black on yellow cards to improve legibility.
 - [ ] Update the total event count shown on the website to 4.
-- [ ] Increase the size of the month indicator and adjust its position relative to the title.
+- [x] Add small impact numbers section below get involved button in hero section.
+- [ ] Potentially change the background squiggle to a "live" fundraising goal.
+- [x] Increase the size of the month indicator and adjust its position relative to the title.
 - [ ] Apply the agreed website feedback and share the updated version with the group for review.
-- [ ] Refine icon sizes for mobile and desktop, and replace emoji characters with appropriate arrow symbols.
+
 
 ## Later
 
@@ -25,4 +27,4 @@ Use this list to track website changes over the coming weeks. Add a short descri
 
 ## Completed
 
-Move finished items here so there is a simple record of what changed.
+- [x] Refine icon sizes for mobile and desktop, and replace emoji characters with appropriate arrow symbols.
