@@ -25,20 +25,27 @@
   </header>
 
   <main id="top">
-    <!-- Decorative line. It is positioned independently so it can visually weave through the page. -->
+    <!-- Decorative fundraising line. The filled path reflects fundraising.json. -->
     <div class="squiggle-wrap" aria-hidden="true">
       <svg class="squiggle" viewBox="0 0 900 4200" preserveAspectRatio="none">
-        <path
-          id="squigglePath"
-          d="M455 0
-             C 215 180, 660 315, 430 505
-             C 170 720, 705 850, 475 1070
-             C 240 1290, 675 1480, 425 1700
-             C 160 1930, 730 2120, 460 2370
-             C 170 2620, 720 2790, 425 3050
-             C 190 3250, 690 3470, 455 3710
-             C 270 3900, 625 4040, 455 4200"
-        />
+        <defs>
+          <path
+            id="squiggleShape"
+            pathLength="100"
+            d="M455 0
+               C 215 180, 660 315, 430 505
+               C 170 720, 705 850, 475 1070
+               C 240 1290, 675 1480, 425 1700
+               C 160 1930, 730 2120, 460 2370
+               C 170 2620, 720 2790, 425 3050
+               C 190 3250, 690 3470, 455 3710
+               C 270 3900, 625 4040, 455 4200"
+          />
+        </defs>
+        <g id="squiggleLine">
+          <use class="squiggle-track" href="#squiggleShape" />
+          <use id="squiggleProgress" class="squiggle-progress" href="#squiggleShape" />
+        </g>
       </svg>
     </div>
 
@@ -57,9 +64,12 @@
 
         <p class="sr-only" id="hero-impact-heading">Campaign impact at a glance</p>
         <dl class="hero-impact-summary" aria-labelledby="hero-impact-heading">
-          <div>
-            <dt>$50K</dt>
-            <dd>fundraising goal for men’s health</dd>
+          <div data-fundraising-summary>
+            <dt data-fundraising-raised>$50K</dt>
+            <dd>
+              <span data-fundraising-description>fundraising goal for men’s health</span>
+              <small class="fundraising-updated" data-fundraising-updated hidden></small>
+            </dd>
           </div>
           <div>
             <dt>06</dt>
@@ -74,6 +84,8 @@
             <dd>Wellington community moving together</dd>
           </div>
         </dl>
+        <p class="sr-only" data-fundraising-status aria-live="polite"></p>
+        <progress class="sr-only" data-fundraising-meter hidden></progress>
       </div>
 
       <div class="hero-art">
@@ -279,9 +291,10 @@
       </div>
 
       <div class="stats">
-        <div class="stat">
-          <strong>$50K</strong>
-          <span>fundraising goal for men’s health</span>
+        <div class="stat" data-fundraising-summary>
+          <strong data-fundraising-raised>$50K</strong>
+          <span data-fundraising-description>fundraising goal for men’s health</span>
+          <small class="fundraising-updated" data-fundraising-updated hidden></small>
         </div>
         <div class="stat">
           <strong>06</strong>

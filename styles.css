@@ -175,7 +175,6 @@ main {
   transform: translateX(-50%);
   z-index: -1;
   pointer-events: none;
-  opacity: 0.35;
 }
 
 .squiggle {
@@ -184,14 +183,38 @@ main {
   overflow: visible;
 }
 
-#squigglePath {
+#squiggleLine {
+  color: var(--theme-squiggle);
+  transition: color 500ms ease;
+}
+
+.squiggle-track,
+.squiggle-progress {
   fill: none;
-  stroke: var(--theme-squiggle);
+  stroke: currentColor;
   stroke-width: 10;
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
-  transition: stroke 500ms ease;
+}
+
+.squiggle-track {
+  opacity: 0.35;
+  transition: opacity 700ms ease;
+}
+
+.squiggle-progress {
+  opacity: 0;
+  stroke-dasharray: var(--fundraising-progress, 0) 100;
+  transition: opacity 700ms ease, stroke-dasharray 1000ms ease;
+}
+
+.squiggle-wrap.has-fundraising-data .squiggle-track {
+  opacity: 0.12;
+}
+
+.squiggle-wrap.has-fundraising-data .squiggle-progress {
+  opacity: 0.55;
 }
 
 /* ==================== Hero ==================== */
@@ -940,6 +963,14 @@ h2 {
   font-weight: 700;
 }
 
+.fundraising-updated {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
 /* ==================== Partners ==================== */
 
 .partners {
@@ -1178,7 +1209,8 @@ h2 {
     width: 180vw;
   }
 
-  #squigglePath {
+  .squiggle-track,
+  .squiggle-progress {
     stroke-width: 8;
   }
 }
@@ -1354,7 +1386,9 @@ h2 {
 
   .nav a,
   .button,
-  #squigglePath,
+  #squiggleLine,
+  .squiggle-track,
+  .squiggle-progress,
   .flip-card-toggle,
   .flip-card-inner,
   .card-front::before,
