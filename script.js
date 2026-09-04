@@ -1,4 +1,91 @@
-const path = document.getElementById("squigglePath");
+const squiggleLine = document.getElementById("squiggleLine");
+const squiggleWrap = document.querySelector(".squiggle-wrap");
+const fundraisingProgress = document.getElementById("squiggleProgress");
+
+const formatFundraisingAmount = (amount, currency, compact = false) => {
+  return new Intl.NumberFormat("en-NZ", {
+    style: "currency",
+    currency,
+    currencyDisplay: "narrowSymbol",
+    maximumFractionDigits: compact ? 1 : 0,
+    notation: compact ? "compact" : "standard"
+  }).format(amount);
+};
+
+const loadFundraisingData = async () => {
+  try {
+    const response = await fetch("fundraising.json", { cache: "no-store" });
+
+    if (!response.ok) {
+      throw new Error(`Fundraising data returned ${response.status}`);
+    }
+
+    const data = await response.json();
+    const raised = Number(data.raised);
+    const goal = Number(data.goal);
+    const currency = typeof data.currency === "string" ? data.currency.toUpperCase() : "NZD";
+
+    if (
+      !Number.isFinite(raised) ||
+      raised < 0 ||
+      !Number.isFinite(goal) ||
+      goal <= 0 ||
+      !/^[A-Z]{3}$/.test(currency)
+    ) {
+      throw new Error("Fundraising data contains invalid values");
+    }
+
+    const percentage = Math.min((raised / goal) * 100, 100);
+    const raisedLabel = formatFundraisingAmount(raised, currency, true);
+    const goalLabel = formatFundraisingAmount(goal, currency, true);
+    const fullRaisedLabel = formatFundraisingAmount(raised, currency);
+    const fullGoalLabel = formatFundraisingAmount(goal, currency);
+    const description = `raised of ${goalLabel} goal for men’s health`;
+    const updatedAt = new Date(data.updatedAt);
+    const hasUpdatedAt = data.updatedAt && !Number.isNaN(updatedAt.getTime());
+
+    document.querySelectorAll("[data-fundraising-raised]").forEach(element => {
+      element.textContent = raisedLabel;
+    });
+
+    document.querySelectorAll("[data-fundraising-description]").forEach(element => {
+      element.textContent = description;
+    });
+
+    if (hasUpdatedAt) {
+      const updatedLabel = new Intl.DateTimeFormat("en-NZ", {
+        dateStyle: "medium",
+        timeStyle: "short"
+      }).format(updatedAt);
+
+      document.querySelectorAll("[data-fundraising-updated]").forEach(element => {
+        element.textContent = `Updated ${updatedLabel}`;
+        element.hidden = false;
+      });
+    }
+
+    const status = document.querySelector("[data-fundraising-status]");
+    if (status) {
+      status.textContent = `${fullRaisedLabel} raised of ${fullGoalLabel} goal.`;
+    }
+
+    const meter = document.querySelector("[data-fundraising-meter]");
+    if (meter) {
+      meter.max = goal;
+      meter.value = Math.min(raised, goal);
+      meter.textContent = `${fullRaisedLabel} raised of ${fullGoalLabel} goal`;
+      meter.setAttribute("aria-label", `${fullRaisedLabel} raised of ${fullGoalLabel} goal`);
+      meter.hidden = false;
+    }
+
+    fundraisingProgress?.style.setProperty("--fundraising-progress", percentage);
+    squiggleWrap?.classList.add("has-fundraising-data");
+  } catch (error) {
+    console.warn("Using the fundraising fallback content:", error);
+  }
+};
+
+loadFundraisingData();
 
 const sectionColors = [
   { selector: "#hero", color: "#D92525" },
@@ -19,7 +106,7 @@ const observer = new IntersectionObserver(
   entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        path.style.stroke = entry.target.dataset.squiggleColor;
+        squiggleLine.style.color = entry.target.dataset.squiggleColor;
       }
     });
   },
@@ -45,7 +132,7 @@ const updateSquiggleParallax = () => {
 
   requestAnimationFrame(() => {
     const offset = window.scrollY * 0.035;
-    path.style.transform = `translateY(${offset}px)`;
+    squiggleLine.style.transform = `translateY(${offset}px)`;
     ticking = false;
   });
 };
@@ -54,7 +141,7 @@ const syncParallaxPreference = () => {
   window.removeEventListener("scroll", updateSquiggleParallax);
 
   if (reducedMotionQuery.matches) {
-    path.style.transform = "none";
+    squiggleLine.style.transform = "none";
     return;
   }
 
