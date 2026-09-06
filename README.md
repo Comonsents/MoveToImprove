@@ -34,10 +34,9 @@ Keep the stylesheet order in `index.html`: shared foundations load first, sectio
 
 ### Fundraising progress
 
-The background fundraising line and the fundraising totals are driven by `fundraising.json`.
-Edit `raised`, `goal`, `currency`, and `updatedAt` to test different progress values. Use an ISO 8601 date and time for `updatedAt`. Run the site through a local development server so the browser can load the JSON file; opening `index.html` directly will show the built-in fallback content instead.
+The background fundraising line and totals read the current amount from cell `A1` in the shared Google Sheet [Website Fundraising Total](https://docs.google.com/spreadsheets/d/1PCS5-EEhQ_InzL-0DR8b07jGTD4Ugvkp6EgN6dqRTa8/edit). The goal is fixed at NZD 50,000 in `script.js`, and the website creates the displayed update time after it successfully receives the Sheet value.
 
-The line fills from top to bottom and stops visually at 100%, while the displayed amount can continue beyond the goal. If the JSON file cannot be loaded or contains invalid values, the page keeps the fallback fundraising goal from `index.html`.
+The Sheet's read endpoint must remain publicly accessible, although editing can stay restricted to the campaign team. If Google Sheets cannot be reached, the site uses the `raised` amount in `fundraising.json`; if that also fails, it keeps the fallback fundraising goal from `index.html`. The line fills from top to bottom and stops visually at 100%, while the displayed amount can continue beyond the goal.
 
 ## Status
 

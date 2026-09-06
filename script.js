@@ -1,6 +1,11 @@
 const squiggleLine = document.getElementById("squiggleLine");
 const squiggleWrap = document.querySelector(".squiggle-wrap");
 const fundraisingProgress = document.getElementById("squiggleProgress");
+const fundraisingGoal = 50000;
+const fundraisingCurrency = "NZD";
+const fundraisingSheetUrl =
+  "https://docs.google.com/spreadsheets/d/1PCS5-EEhQ_InzL-0DR8b07jGTD4Ugvkp6EgN6dqRTa8/gviz/tq";
+const fundraisingSheetCallback = "handleMtiFundraisingResponse";
 
 const formatFundraisingAmount = (amount, currency, compact = false) => {
   return new Intl.NumberFormat("en-NZ", {
@@ -12,83 +17,141 @@ const formatFundraisingAmount = (amount, currency, compact = false) => {
   }).format(amount);
 };
 
+const parseFundraisingAmount = value => {
+  const textValue = String(value ?? "").trim();
+
+  if (!textValue || !/\d/.test(textValue)) {
+    throw new Error("Fundraising amount is missing");
+  }
+
+  const parsedValue = typeof value === "number"
+    ? value
+    : Number(textValue.replace(/[^0-9.-]/g, ""));
+
+  if (!Number.isFinite(parsedValue) || parsedValue < 0) {
+    throw new Error("Fundraising amount is invalid");
+  }
+
+  return parsedValue;
+};
+
+const getFundraisingAmountFromSheet = () => {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    const timeout = window.setTimeout(() => {
+      cleanup();
+      reject(new Error("Google Sheets request timed out"));
+    }, 8000);
+
+    const cleanup = () => {
+      window.clearTimeout(timeout);
+      script.remove();
+      delete window[fundraisingSheetCallback];
+    };
+
+    window[fundraisingSheetCallback] = response => {
+      try {
+        if (response?.status !== "ok") {
+          throw new Error("Google Sheets returned an error");
+        }
+
+        const value = response.table?.rows?.[0]?.c?.[0]?.v;
+        const raised = parseFundraisingAmount(value);
+        cleanup();
+        resolve(raised);
+      } catch (error) {
+        cleanup();
+        reject(error);
+      }
+    };
+
+    script.async = true;
+    script.onerror = () => {
+      cleanup();
+      reject(new Error("Google Sheets could not be reached"));
+    };
+    script.src = `${fundraisingSheetUrl}?tqx=responseHandler:${fundraisingSheetCallback}&gid=0&range=A1`;
+    document.head.append(script);
+  });
+};
+
+const getFallbackFundraisingAmount = async () => {
+  const response = await fetch("fundraising.json", { cache: "no-store" });
+
+  if (!response.ok) {
+    throw new Error(`Fallback fundraising data returned ${response.status}`);
+  }
+
+  const data = await response.json();
+  return parseFundraisingAmount(data.raised);
+};
+
+const displayFundraisingData = (raised, updatedAt = null) => {
+  const percentage = Math.min((raised / fundraisingGoal) * 100, 100);
+  const raisedLabel = formatFundraisingAmount(raised, fundraisingCurrency, true);
+  const goalLabel = formatFundraisingAmount(fundraisingGoal, fundraisingCurrency, true);
+  const fullRaisedLabel = formatFundraisingAmount(raised, fundraisingCurrency);
+  const fullGoalLabel = formatFundraisingAmount(fundraisingGoal, fundraisingCurrency);
+  const description = `raised of ${goalLabel} goal for men’s health`;
+
+  document.querySelectorAll("[data-fundraising-raised]").forEach(element => {
+    const unit = element.querySelector(".fundraising-unit");
+    if (unit) {
+      const hasThousandsUnit = raisedLabel.endsWith("K");
+      unit.textContent = hasThousandsUnit ? "k" : "";
+      element.replaceChildren(hasThousandsUnit ? raisedLabel.slice(0, -1) : raisedLabel, unit);
+    } else {
+      element.textContent = raisedLabel;
+    }
+  });
+
+  document.querySelectorAll("[data-fundraising-description]").forEach(element => {
+    element.textContent = description;
+  });
+
+  if (updatedAt) {
+    const updatedLabel = new Intl.DateTimeFormat("en-NZ", {
+      dateStyle: "medium",
+      timeStyle: "short"
+    }).format(updatedAt);
+
+    document.querySelectorAll("[data-fundraising-updated]").forEach(element => {
+      element.textContent = `Updated ${updatedLabel}`;
+      element.hidden = false;
+    });
+  }
+
+  const status = document.querySelector("[data-fundraising-status]");
+  if (status) {
+    status.textContent = `${fullRaisedLabel} raised of ${fullGoalLabel} goal.`;
+  }
+
+  const meter = document.querySelector("[data-fundraising-meter]");
+  if (meter) {
+    meter.max = fundraisingGoal;
+    meter.value = Math.min(raised, fundraisingGoal);
+    meter.textContent = `${fullRaisedLabel} raised of ${fullGoalLabel} goal`;
+    meter.setAttribute("aria-label", `${fullRaisedLabel} raised of ${fullGoalLabel} goal`);
+    meter.hidden = false;
+  }
+
+  fundraisingProgress?.style.setProperty("--fundraising-progress", percentage);
+  squiggleWrap?.classList.add("has-fundraising-data");
+};
+
 const loadFundraisingData = async () => {
   try {
-    const response = await fetch("fundraising.json", { cache: "no-store" });
-
-    if (!response.ok) {
-      throw new Error(`Fundraising data returned ${response.status}`);
-    }
-
-    const data = await response.json();
-    const raised = Number(data.raised);
-    const goal = Number(data.goal);
-    const currency = typeof data.currency === "string" ? data.currency.toUpperCase() : "NZD";
-
-    if (
-      !Number.isFinite(raised) ||
-      raised < 0 ||
-      !Number.isFinite(goal) ||
-      goal <= 0 ||
-      !/^[A-Z]{3}$/.test(currency)
-    ) {
-      throw new Error("Fundraising data contains invalid values");
-    }
-
-    const percentage = Math.min((raised / goal) * 100, 100);
-    const raisedLabel = formatFundraisingAmount(raised, currency, true);
-    const goalLabel = formatFundraisingAmount(goal, currency, true);
-    const fullRaisedLabel = formatFundraisingAmount(raised, currency);
-    const fullGoalLabel = formatFundraisingAmount(goal, currency);
-    const description = `raised of ${goalLabel} goal for men’s health`;
-    const updatedAt = new Date(data.updatedAt);
-    const hasUpdatedAt = data.updatedAt && !Number.isNaN(updatedAt.getTime());
-
-    document.querySelectorAll("[data-fundraising-raised]").forEach(element => {
-      const unit = element.querySelector(".fundraising-unit");
-      if (unit) {
-        const hasThousandsUnit = raisedLabel.endsWith("K");
-        unit.textContent = hasThousandsUnit ? "k" : "";
-        element.replaceChildren(hasThousandsUnit ? raisedLabel.slice(0, -1) : raisedLabel, unit);
-      } else {
-        element.textContent = raisedLabel;
-      }
-    });
-
-    document.querySelectorAll("[data-fundraising-description]").forEach(element => {
-      element.textContent = description;
-    });
-
-    if (hasUpdatedAt) {
-      const updatedLabel = new Intl.DateTimeFormat("en-NZ", {
-        dateStyle: "medium",
-        timeStyle: "short"
-      }).format(updatedAt);
-
-      document.querySelectorAll("[data-fundraising-updated]").forEach(element => {
-        element.textContent = `Updated ${updatedLabel}`;
-        element.hidden = false;
-      });
-    }
-
-    const status = document.querySelector("[data-fundraising-status]");
-    if (status) {
-      status.textContent = `${fullRaisedLabel} raised of ${fullGoalLabel} goal.`;
-    }
-
-    const meter = document.querySelector("[data-fundraising-meter]");
-    if (meter) {
-      meter.max = goal;
-      meter.value = Math.min(raised, goal);
-      meter.textContent = `${fullRaisedLabel} raised of ${fullGoalLabel} goal`;
-      meter.setAttribute("aria-label", `${fullRaisedLabel} raised of ${fullGoalLabel} goal`);
-      meter.hidden = false;
-    }
-
-    fundraisingProgress?.style.setProperty("--fundraising-progress", percentage);
-    squiggleWrap?.classList.add("has-fundraising-data");
+    const raised = await getFundraisingAmountFromSheet();
+    displayFundraisingData(raised, new Date());
   } catch (error) {
-    console.warn("Using the fundraising fallback content:", error);
+    console.warn("Unable to load the Google Sheet; trying the local fallback:", error);
+
+    try {
+      const raised = await getFallbackFundraisingAmount();
+      displayFundraisingData(raised);
+    } catch (fallbackError) {
+      console.warn("Using the fundraising fallback content from the page:", fallbackError);
+    }
   }
 };
 
