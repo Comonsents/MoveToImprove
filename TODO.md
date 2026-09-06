@@ -12,12 +12,9 @@ Use this list to track website changes over the coming weeks. Add a short descri
 
 ## Next up
 
-- [x] Update font colour: use grey text instead of black on yellow cards to improve legibility.
-- [x] Update the total event count shown on the website to 4.
-- [x] Add small impact numbers section below get involved button in hero section.
-- [x] Potentially change the background squiggle to a "live" fundraising goal.
-- [x] Increase the size of the month indicator and adjust its position relative to the title.
+- [ ] Add About page with details on how MTI came to fruition. 
 - [ ] Apply the agreed website feedback and share the updated version with the group for review.
+
 
 
 ## Later
@@ -28,3 +25,8 @@ Use this list to track website changes over the coming weeks. Add a short descri
 ## Completed
 
 - [x] Refine icon sizes for mobile and desktop, and replace emoji characters with appropriate arrow symbols.
+- [x] Update font colour: use grey text instead of black on yellow cards to improve legibility.
+- [x] Update the total event count shown on the website to 4.
+- [x] Add small impact numbers section below get involved button in hero section.
+- [x] Potentially change the background squiggle to a "live" fundraising goal.
+- [x] Increase the size of the month indicator and adjust its position relative to the title.

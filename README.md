@@ -15,6 +15,21 @@ cd MoveToImprove
 
 Then open `index.html` directly in a browser or run it using a local development server such as VS Code Live Server.
 
+### Stylesheets
+
+CSS lives in `css/` and loads through ordinary stylesheet links in `index.html`, with no build step:
+
+- `theme.css`: brand colours, theme variables, and background image references.
+- `base.css`: reset, typography, and accessibility helpers.
+- `layout.css`: header, navigation, page layout, background squiggle, and footer.
+- `components.css`: shared buttons, links, labels, and content patterns.
+- `hero.css`: hero layout, photo card, and impact summary.
+- `participation.css`: activity cards, flip effects, and expanded dialog.
+- `sections.css`: about, events, flagship, impact, partners, and support sections.
+- `responsive.css`: tablet/mobile overrides and reduced-motion preferences.
+
+Keep the stylesheet order in `index.html`: shared foundations load first, section styles follow, and responsive overrides load last. Image URLs in CSS are relative to the `css/` directory (for example, `../images/flagship.jpg`). When changing styles, check desktop and mobile layouts, including horizontal overflow.
+
 ### Fundraising progress
 
 The background fundraising line and the fundraising totals are driven by `fundraising.json`.

@@ -1,0 +1,44 @@
+/* ==================== Theme variables ==================== */
+
+:root {
+  /* ===== THEME COLOURS =====
+     Change these values to retheme the entire site. */
+  --colour-ink: #3f3f40;
+  --colour-paper: #ffffff;
+  --colour-white: #ffffff;
+
+  --colour-accent-1: #3f3f40; /* charcoal */
+  --colour-accent-2: #1e6196; /* blue */
+  --colour-accent-3: #d92525; /* red */
+  --colour-accent-4: #f2ac29; /* gold */
+  --colour-accent-5: #326a33; /* green */
+  --colour-charcoal-deep: #000000;
+  --colour-blue-deep: #003565;
+  --colour-red-deep: #bf2626;
+  --colour-gold-deep: #c08300;
+  --colour-green-deep: #15511e;
+
+  /* Semantic theme roles */
+  --theme-text: var(--colour-ink);
+  --theme-background: var(--colour-paper);
+  --theme-header-background: rgba(255, 255, 255, 0.88);
+  --theme-primary: var(--colour-accent-3);
+  --theme-on-primary: var(--colour-white);
+  --theme-squiggle: var(--colour-accent-3);
+
+  /* Replace this URL with the final Get Involved image. */
+  --support-background-image: url("../images/get_involved.jpeg");
+
+  /* Replace this URL with the final Shed 6 photograph. */
+  --flagship-background-image: url("../images/flagship.jpg");
+
+  /* Cards / decorative colours */
+  --card-1: var(--colour-accent-4);
+  --card-2: var(--colour-accent-3);
+  --card-3: var(--colour-accent-1);
+  --card-4: var(--colour-accent-5);
+  --card-5: var(--colour-accent-2);
+
+  --max: 1240px;
+  --section-padding: 85px 0 100px;
+}

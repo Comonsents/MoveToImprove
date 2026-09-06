@@ -1,0 +1,249 @@
+/* ==================== Take Part ==================== */
+
+.work {
+  padding: var(--section-padding);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+  width: min(100%, 900px);
+  margin-inline: auto;
+}
+
+.feature-card:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.feature-card:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+
+.feature-card {
+  grid-column: span 2;
+  min-width: 0;
+  min-height: 260px;
+  padding: 0;
+  border-radius: 30px;
+  perspective: 1200px;
+  color: var(--card-colour, var(--colour-white));
+}
+
+.flip-card-toggle {
+  width: 100%;
+  min-height: inherit;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 220ms ease;
+}
+
+.flip-card-toggle:focus-visible {
+  outline: 4px solid var(--theme-text);
+  outline-offset: 5px;
+}
+
+.flip-card-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: inherit;
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.2, 0.72, 0.22, 1);
+}
+
+.expanded-card-dialog.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .flip-card-toggle:hover {
+    transform: translateY(-8px) rotate(-1deg);
+  }
+
+  .flip-card-toggle:hover .card-front::before {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  min-height: inherit;
+  padding: 24px;
+  padding-left: 15px;
+  border: 1.5px solid var(--theme-text);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: inherit;
+  background: var(--card-background);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card-front {
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.card-front::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.32) 0 47%,
+    rgba(0, 0, 0, 0.18) 48% 50%,
+    transparent 51%
+  );
+  pointer-events: none;
+  transition: width 180ms ease, height 180ms ease;
+}
+
+.card-front::after {
+  content: "↻";
+  position: absolute;
+  left: 8px;
+  bottom: 7px;
+}
+
+.card-front::after,
+.card-arrow {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: none;
+  transform: rotate(-24deg);
+}
+
+.activity-icon {
+  align-self: center;
+  width: min(76%, 210px);
+  max-height: 210px;
+}
+
+.card-title {
+  display: block;
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: clamp(2.4rem, 4vw, 4.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+.card-a { --card-background: var(--card-1); }
+.card-b { --card-background: var(--card-2); }
+.card-c { --card-background: var(--card-3); }
+.card-d { --card-background: var(--card-4); }
+.card-e { --card-background: var(--card-5); }
+
+.card-number {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.card-d .card-title {
+  font-size: clamp(2rem, 3.25vw, 3.5rem);
+}
+
+.card-description {
+  display: block;
+  max-width: 28ch;
+  margin-top: 12px;
+  font-size: 1rem;
+}
+
+.card-arrow {
+  align-self: flex-end;
+}
+
+.expanded-card-dialog {
+  width: min(75vw, 960px);
+  height: min(75vh, 760px);
+  max-width: calc(100vw - 32px);
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  color: var(--card-colour, var(--colour-white));
+  background: transparent;
+  overflow: visible;
+  perspective: 1200px;
+}
+
+.expanded-card-dialog::backdrop {
+  background: var(--colour-charcoal-deep);
+  opacity: 0.56;
+}
+
+.expanded-card-shell,
+.expanded-card-dialog .flip-card-inner,
+.expanded-card-dialog .card-face {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.expanded-card-dialog .card-back {
+  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: clamp(28px, 5vw, 64px);
+  text-align: center;
+}
+
+.expanded-card-dialog .card-back-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.expanded-card-dialog .card-number {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+}
+
+.expanded-card-dialog .card-description {
+  margin-inline: auto;
+}
+
+.expanded-card-dialog .card-arrow {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+}
+
+.expanded-card-close {
+  padding: 8px;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.expanded-card-close:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
