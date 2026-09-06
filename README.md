@@ -1,8 +1,10 @@
 # Move To Improve
 
-Move To Improve is a one-page website for a Movember fundraising initiative focused on movement, community, and wellbeing.
+Move To Improve is a static website for a Movember fundraising initiative focused on movement, community, and wellbeing.
 
 The site provides an overview of the campaign, ways to take part, key events, and information for supporters and sponsors.
+
+The homepage lives in `index.html`. The About page in `about.html` shares the site’s stylesheets and tells the story behind the campaign. Its navigation links return to the relevant homepage sections. Keep shared navigation and footer changes consistent across both pages.
 
 ## Development
 

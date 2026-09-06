@@ -41,6 +41,13 @@
   transform: translateY(-1px);
 }
 
+.nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--theme-primary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
 .nav-cta {
   padding: 10px 15px;
   border: 1px solid var(--theme-text);
