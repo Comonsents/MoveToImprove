@@ -1,0 +1,107 @@
+/* ==================== Hero ==================== */
+
+.hero {
+  min-height: 100svh;
+  padding-top: 145px;
+  padding-bottom: 70px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero h1 {
+  margin: 18px 0 24px;
+  max-width: 800px;
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+
+.hero-text {
+  max-width: 600px;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.65;
+}
+
+.hero-participation {
+  max-width: 600px;
+  margin-top: 18px;
+  font-weight: 800;
+}
+
+.hero-impact-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: min(100%, 600px);
+  margin: 30px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--theme-text);
+}
+
+.hero-impact-summary > div {
+  min-width: 0;
+  padding-right: 18px;
+}
+
+.hero-impact-summary > div + div {
+  padding-left: 18px;
+  border-left: 1px solid var(--theme-text);
+}
+
+.hero-impact-summary dt {
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.hero-impact-summary dd {
+  max-width: 18ch;
+  margin: 7px 0 0;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.hero-art {
+  position: relative;
+  min-height: 560px;
+  display: grid;
+  place-items: center;
+}
+
+.hero-card {
+  width: min(100%, 460px);
+  padding: 20px;
+  background: var(--colour-white);
+  border: 1.5px solid var(--theme-text);
+  border-radius: 26px;
+  box-shadow: 16px 16px 0 var(--colour-accent-3);
+  transform: rotate(3deg);
+}
+
+.hero-card-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+}
+
+.hero-card-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin: 20px 0;
+  object-fit: cover;
+  object-position: center 60%;
+  border-radius: 16px;
+}
+
+.hero-card p {
+  margin: 0;
+  max-width: 35ch;
+  font-size: 0.95rem;
+}
