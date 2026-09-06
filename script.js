@@ -45,7 +45,14 @@ const loadFundraisingData = async () => {
     const hasUpdatedAt = data.updatedAt && !Number.isNaN(updatedAt.getTime());
 
     document.querySelectorAll("[data-fundraising-raised]").forEach(element => {
-      element.textContent = raisedLabel;
+      const unit = element.querySelector(".fundraising-unit");
+      if (unit) {
+        const hasThousandsUnit = raisedLabel.endsWith("K");
+        unit.textContent = hasThousandsUnit ? "k" : "";
+        element.replaceChildren(hasThousandsUnit ? raisedLabel.slice(0, -1) : raisedLabel, unit);
+      } else {
+        element.textContent = raisedLabel;
+      }
     });
 
     document.querySelectorAll("[data-fundraising-description]").forEach(element => {

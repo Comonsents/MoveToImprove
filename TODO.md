@@ -12,10 +12,10 @@ Use this list to track website changes over the coming weeks. Add a short descri
 
 ## Next up
 
-- [ ] Update font colour: use grey text instead of black on yellow cards to improve legibility.
+- [x] Update font colour: use grey text instead of black on yellow cards to improve legibility.
 - [x] Update the total event count shown on the website to 4.
 - [x] Add small impact numbers section below get involved button in hero section.
-- [ ] Potentially change the background squiggle to a "live" fundraising goal.
+- [x] Potentially change the background squiggle to a "live" fundraising goal.
 - [x] Increase the size of the month indicator and adjust its position relative to the title.
 - [ ] Apply the agreed website feedback and share the updated version with the group for review.
 
