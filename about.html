@@ -21,13 +21,26 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Home">
-      <img src="images/logos/MTI_Stacked Lettering.svg" alt="Move to Improve">
+      <picture>
+        <source media="(max-width: 560px)" srcset="images/logos/MTI_Logo%20Only.svg">
+        <img src="images/logos/MTI_Stacked Lettering.svg" alt="Move to Improve">
+      </picture>
     </a>
     <nav class="nav" aria-label="Primary navigation">
-      <a href="about.html" aria-current="page">About</a>
-      <a href="index.html#events">Events</a>
-      <a href="index.html#flagship">Flagship</a>
-      <a href="index.html#partners">Partners</a>
+      <a class="nav-about" href="about.html" aria-current="page">About</a>
+      <!-- Replace platform homepages with the campaign profile URLs when ready. -->
+      <a class="nav-social" href="https://www.instagram.com/mo_bros_wellington" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+        </svg>
+      </a>
+      <a class="nav-social" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook (opens in a new tab)">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+          <path d="M14 22v-9h3l.5-4H14V7c0-1.2.4-2 2-2h2V1.5A23 23 0 0 0 15 1c-3 0-5 1.8-5 5v3H7v4h3v9z" />
+        </svg>
+      </a>
       <a class="nav-cta" href="index.html#support">Support</a>
     </nav>
   </header>

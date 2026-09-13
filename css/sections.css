@@ -1,22 +1,23 @@
-/* ==================== About ==================== */
+/* ==================== Shared section spacing ==================== */
 
-.intro {
-  padding-top: 90px;
-  padding-bottom: 95px;
+.intro,
+.work,
+.events,
+.flagship,
+.impact,
+.partners,
+.support {
+  padding: var(--section-padding);
 }
 
 /* ==================== Events ==================== */
-
-.events {
-  padding: 96px 0 104px;
-}
 
 .events-heading {
   display: grid;
   grid-template-columns: 1.35fr 0.65fr;
   gap: 72px;
   align-items: end;
-  margin: 70px 0 58px;
+  margin: 35px 0 58px;
 }
 
 .events-heading h2 {
@@ -124,15 +125,11 @@
 
 /* ==================== Flagship ==================== */
 
-.flagship {
-  padding: 105px 0;
-}
-
 .flagship-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   gap: 70px;
-  margin-top: 68px;
+  margin-top: 34px;
   align-items: stretch;
 }
 
@@ -192,15 +189,8 @@
   gap: 28px;
   min-height: 58px;
   padding-inline: 26px;
-  border-radius: 999px;
   color: var(--colour-white);
   background: var(--colour-accent-3);
-  box-shadow: 5px 5px 0 var(--colour-red-deep);
-}
-
-.flagship-button:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0 var(--colour-red-deep);
 }
 
 .flagship-visual {
@@ -238,10 +228,6 @@
 
 /* ==================== Impact ==================== */
 
-.impact {
-  padding: var(--section-padding);
-}
-
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -268,16 +254,12 @@
 
 /* ==================== Partners ==================== */
 
-.partners {
-  padding: 95px 0 110px;
-}
-
 .partners-heading {
   display: grid;
   grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
   gap: 70px;
   align-items: end;
-  margin: 68px 0 62px;
+  margin: 34px 0 62px;
 }
 
 .partners-heading h2 {
@@ -347,10 +329,6 @@
 
 /* ==================== Support ==================== */
 
-.support {
-  padding: 50px 0 85px;
-}
-
 .support-panel {
   position: relative;
   isolation: isolate;
@@ -372,7 +350,7 @@
 }
 
 .support-grid {
-  margin-top: 48px;
+  margin-top: 24px;
   align-items: end;
 }
 

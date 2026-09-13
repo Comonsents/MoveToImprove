@@ -27,12 +27,16 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
   font-size: 0.9rem;
   font-weight: 600;
 }
 
 .nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
@@ -52,6 +56,16 @@
   padding: 10px 15px;
   border: 1px solid var(--theme-text);
   border-radius: 999px;
+}
+
+.nav-social {
+  width: 28px;
+  flex-shrink: 0;
+}
+
+.nav-social svg {
+  width: 24px;
+  height: 24px;
 }
 
 /* ==================== Shared layout and decoration ==================== */

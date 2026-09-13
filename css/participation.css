@@ -1,9 +1,5 @@
 /* ==================== Take Part ==================== */
 
-.work {
-  padding: var(--section-padding);
-}
-
 .cards {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -77,9 +73,7 @@
   position: absolute;
   inset: 0;
   min-height: inherit;
-  padding: 24px;
-  padding-left: 15px;
-  /* border: 1.5px solid var(--theme-text); */
+  padding: 24px 24px 24px 15px;
   border-radius: 24px;
   display: flex;
   flex-direction: column;
@@ -123,15 +117,15 @@
   position: absolute;
   left: 8px;
   bottom: 7px;
+  transform: rotate(-24deg);
 }
 
 .card-front::after,
-.card-arrow {
+.card-close-icon {
   font-size: 1rem;
   font-weight: 800;
   line-height: 1;
   pointer-events: none;
-  transform: rotate(-24deg);
 }
 
 .activity-icon {
@@ -171,8 +165,9 @@
   font-size: 1rem;
 }
 
-.card-arrow {
+.card-close-icon {
   align-self: flex-end;
+  font-size: 1.5rem;
 }
 
 .expanded-card-dialog {
@@ -227,13 +222,15 @@
   margin-inline: auto;
 }
 
-.expanded-card-dialog .card-arrow {
+.expanded-card-dialog .card-close-icon {
   position: absolute;
   right: 18px;
   bottom: 18px;
 }
 
 .expanded-card-close {
+  min-width: 44px;
+  min-height: 44px;
   padding: 8px;
   border: 0;
   color: inherit;
