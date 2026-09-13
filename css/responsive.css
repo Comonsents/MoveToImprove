@@ -6,12 +6,8 @@
   }
 
   .nav {
-    gap: 12px;
+    gap: 6px;
     font-size: 0.8rem;
-  }
-
-  .nav a:not(.nav-cta):not([href="about.html"]) {
-    display: none;
   }
 
   .section {
@@ -32,10 +28,7 @@
   .intro-grid > *,
   .section-heading > *,
   .impact-top > *,
-  .support-grid > *,
-  .events-heading > *,
-  .flagship-grid > *,
-  .partners-heading > * {
+  .support-grid > * {
     min-width: 0;
   }
 
@@ -67,7 +60,7 @@
   .events-heading,
   .flagship-grid,
   .partners-heading {
-    margin-top: 50px;
+    margin-top: 25px;
   }
 
   .event-card {
@@ -84,7 +77,6 @@
 
   .feature-card {
     min-height: 240px;
-    min-width: 0;
   }
 
   .squiggle-wrap {
@@ -98,6 +90,10 @@
 }
 
 @media (max-width: 560px) {
+  :root {
+    --section-padding: 36px 0 40px;
+  }
+
   .brand img {
     height: 34px;
   }
@@ -169,7 +165,6 @@
   .support-panel {
     padding: 28px 22px;
     border-radius: 24px;
-    background-position: center;
   }
 
   .cards {
@@ -206,18 +201,11 @@
     grid-template-columns: 1fr;
   }
 
-  .events,
-  .flagship,
-  .partners {
-    padding-top: 74px;
-    padding-bottom: 80px;
-  }
-
   .events-heading,
   .flagship-grid,
   .partners-heading {
     gap: 32px;
-    margin-top: 38px;
+    margin-top: 19px;
     margin-bottom: 42px;
   }
 
@@ -225,7 +213,6 @@
   .flagship h2,
   .partners-heading h2 {
     font-size: clamp(2.25rem, 11vw, 3.15rem);
-    overflow-wrap: break-word;
   }
 
   .event-card {

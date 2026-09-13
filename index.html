@@ -22,13 +22,26 @@
 <body>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Home">
-    <img src="images/logos/MTI_Stacked Lettering.svg" alt="Move to Improve">
-  </a>
+      <picture>
+        <source media="(max-width: 560px)" srcset="images/logos/MTI_Logo%20Only.svg">
+        <img src="images/logos/MTI_Stacked Lettering.svg" alt="Move to Improve">
+      </picture>
+    </a>
     <nav class="nav" aria-label="Primary navigation">
-      <a href="about.html">About</a>
-      <a href="#events">Events</a>
-      <a href="#flagship">Flagship</a>
-      <a href="#partners">Partners</a>
+      <a class="nav-about" href="about.html">About</a>
+      <!-- Replace platform homepages with the campaign profile URLs when ready. -->
+      <a class="nav-social" href="https://www.instagram.com/mo_bros_wellington" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+        </svg>
+      </a>
+      <a class="nav-social" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook (opens in a new tab)">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+          <path d="M14 22v-9h3l.5-4H14V7c0-1.2.4-2 2-2h2V1.5A23 23 0 0 0 15 1c-3 0-5 1.8-5 5v3H7v4h3v9z" />
+        </svg>
+      </a>
       <a class="nav-cta" href="#support">Support</a>
     </nav>
   </header>
@@ -148,7 +161,7 @@
               <span class="card-face card-back">
                 <span class="card-number">01 / Yoga</span>
                 <span class="card-back-copy"><span class="card-title">Yoga</span><span class="card-description">Move gently, breathe, stretch and make space to reconnect with yourself and others.</span></span>
-                <span class="card-arrow">↻</span>
+                <span class="card-close-icon" aria-hidden="true">×</span>
               </span>
             </span>
           </button>
@@ -164,7 +177,7 @@
               <span class="card-face card-back">
                 <span class="card-number">02 / Run</span>
                 <span class="card-back-copy"><span class="card-title">Run</span><span class="card-description">Run one loop or six, at your pace, alongside a Wellington community moving for men’s health.</span></span>
-                <span class="card-arrow">↻</span>
+                <span class="card-close-icon" aria-hidden="true">×</span>
               </span>
             </span>
           </button>
@@ -180,7 +193,7 @@
               <span class="card-face card-back">
                 <span class="card-number">03 / Recover</span>
                 <span class="card-back-copy"><span class="card-title">Recover</span><span class="card-description">Pause, reset and recover. Looking after yourself is part of the movement, too.</span></span>
-                <span class="card-arrow">↻</span>
+                <span class="card-close-icon" aria-hidden="true">×</span>
               </span>
             </span>
           </button>
@@ -196,7 +209,7 @@
               <span class="card-face card-back">
                 <span class="card-number">04 / Community</span>
                 <span class="card-back-copy"><span class="card-title">Community</span><span class="card-description">Volunteer, cheer, share a coffee or start a conversation. Connection is how we improve together.</span></span>
-                <span class="card-arrow">↻</span>
+                <span class="card-close-icon" aria-hidden="true">×</span>
               </span>
             </span>
           </button>
@@ -212,7 +225,7 @@
               <span class="card-face card-back">
                 <span class="card-number">05 / Gym</span>
                 <span class="card-back-copy"><span class="card-title">Gym</span><span class="card-description">Train your way and bring your community with you. Contribution matters more than performance.</span></span>
-                <span class="card-arrow">↻</span>
+                <span class="card-close-icon" aria-hidden="true">×</span>
               </span>
             </span>
           </button>

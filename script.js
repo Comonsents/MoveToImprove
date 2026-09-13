@@ -296,11 +296,11 @@ cardToggles.forEach(card => {
     const title = expandedCard.querySelector(".card-title");
     const closeButton = document.createElement("button");
 
-    closeButton.className = "card-arrow expanded-card-close";
+    closeButton.className = "card-close-icon expanded-card-close";
     closeButton.type = "button";
-    closeButton.textContent = "↻";
+    closeButton.textContent = "×";
     closeButton.setAttribute("aria-label", `Close expanded ${title?.textContent || "activity"} card`);
-    expandedCard.querySelector(".card-arrow")?.replaceWith(closeButton);
+    expandedCard.querySelector(".card-close-icon")?.replaceWith(closeButton);
     expandedCard.removeAttribute("aria-hidden");
     expandedCard.querySelector(".card-front")?.setAttribute("aria-hidden", "true");
 

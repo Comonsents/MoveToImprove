@@ -10,6 +10,7 @@
 
 .section-label {
   font-size: 0.8rem;
+  color: var(--colour-accent-3);
 }
 
 .hero-actions {
@@ -34,10 +35,15 @@
 .button-primary {
   background: var(--theme-primary);
   color: var(--theme-on-primary);
+}
+
+.button-primary,
+.flagship-button {
   box-shadow: 5px 5px 0 var(--colour-red-deep);
 }
 
-.button-primary:hover {
+.button-primary:hover,
+.flagship-button:hover {
   transform: translate(-2px, -2px);
   box-shadow: 8px 8px 0 var(--colour-red-deep);
 }
@@ -57,7 +63,7 @@
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 80px;
-  margin-top: 42px;
+  margin-top: 21px;
 }
 
 .intro-copy,
@@ -80,7 +86,7 @@
 
 .section-heading,
 .impact-top {
-  margin: 40px 0 60px;
+  margin: 20px 0 60px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
