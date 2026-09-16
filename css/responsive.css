@@ -1,5 +1,11 @@
 /* ==================== Responsive layouts ==================== */
 
+@media (max-width: 1199px) {
+  .event-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
   .site-header {
     padding-inline: 18px;
@@ -45,14 +51,13 @@
     display: block;
   }
 
-  .section-heading > p,
+  .section-heading-copy,
   .impact-top > p {
     margin-top: 24px;
   }
 
   .cards,
   .stats,
-  .event-cards,
   .partner-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -65,6 +70,20 @@
 
   .event-card {
     min-height: 300px;
+  }
+
+  .event-panel-surface {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .flagship-photo {
+    width: min(100%, 540px);
+    justify-self: center;
+  }
+
+  .flagship-loop-starts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .flagship-visual {
@@ -221,6 +240,41 @@
     box-shadow: 6px 6px 0 var(--shadow-colour);
   }
 
+  .event-panel-surface {
+    padding: 24px;
+    box-shadow: 6px 6px 0 var(--shadow-colour);
+  }
+
+  .flagship-photo {
+    box-shadow: 6px 6px 0 var(--colour-accent-3);
+  }
+
+  .flagship-loop-starts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .flagship-activities li {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 18px;
+    padding: 24px 0;
+  }
+
+  .flagship-activity-icon {
+    width: 52px;
+    height: 52px;
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .flagship-activities p {
+    grid-column: 2;
+  }
+
+  .flagship-invitation {
+    padding: 28px 22px;
+    border-radius: 24px;
+  }
+
   .event-meta {
     align-items: flex-start;
   }
@@ -273,7 +327,6 @@
   .flip-card-toggle,
   .flip-card-inner,
   .card-front::before,
-  .event-card,
   .partner-mark {
     transition: none;
   }
@@ -281,7 +334,6 @@
   .nav a:hover,
   .button:hover,
   .flip-card-toggle:hover,
-  .event-card:hover,
   .partner-mark:hover {
     transform: none;
   }

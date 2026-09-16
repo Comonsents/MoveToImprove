@@ -4,7 +4,7 @@ Move To Improve is a static website for a Movember fundraising initiative focuse
 
 The site provides an overview of the campaign, ways to take part, key events, and information for supporters and sponsors.
 
-The homepage lives in `index.html`. The About page in `about.html` shares the site’s stylesheets and tells the story behind the campaign. Its navigation links return to the relevant homepage sections. Keep shared navigation and footer changes consistent across both pages.
+The homepage lives in `index.html`. The About page in `about.html` tells the story behind the campaign, and `flagship.html` contains the flagship event details. Both pages share the site’s stylesheets and link back to relevant homepage sections. Keep shared navigation and footer changes consistent across all three pages.
 
 ## Development
 
@@ -28,6 +28,7 @@ CSS lives in `css/` and loads through ordinary stylesheet links in `index.html`,
 - `hero.css`: hero layout, photo card, and impact summary.
 - `participation.css`: activity cards, flip effects, and expanded dialog.
 - `sections.css`: about, events, flagship, impact, partners, and support sections.
+- `flagship-page.css`: flagship event page photo, loop start times, activities, and invitation.
 - `responsive.css`: tablet/mobile overrides and reduced-motion preferences.
 
 Keep the stylesheet order in `index.html`: shared foundations load first, section styles follow, and responsive overrides load last. Image URLs in CSS are relative to the `css/` directory (for example, `../images/flagship.jpg`). When changing styles, check desktop and mobile layouts, including horizontal overflow.
