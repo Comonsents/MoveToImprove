@@ -222,6 +222,149 @@ const syncParallaxPreference = () => {
 syncParallaxPreference();
 reducedMotionQuery.addEventListener("change", syncParallaxPreference);
 
+// Enhance native event disclosures into one shared, animated reading panel.
+const setupEventPanel = () => {
+  const panel = document.getElementById("event-panel");
+  if (!panel) return;
+
+  const grid = panel.closest(".event-cards");
+  const cards = Array.from(grid.querySelectorAll(".event-card"));
+  const title = panel.querySelector("h3");
+  const meta = panel.querySelector("[data-event-panel-meta]");
+  const when = panel.querySelector("[data-event-panel-when]");
+  const content = panel.querySelector("[data-event-panel-content]");
+  const closeButton = panel.querySelector(".event-panel-close");
+  let activeEvent = null;
+  let animation = null;
+
+  const positionPanel = () => {
+    if (!activeEvent) return;
+    const columns = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
+    const row = Math.floor(cards.indexOf(activeEvent.card) / columns);
+    const lastCardInRow = cards[Math.min((row + 1) * columns, cards.length) - 1];
+    if (panel.previousElementSibling !== lastCardInRow) lastCardInRow.after(panel);
+  };
+
+  const finishAnimation = () => {
+    animation?.cancel();
+    animation = null;
+    panel.classList.remove("is-animating");
+    panel.hidden = !activeEvent;
+    panel.inert = !activeEvent;
+  };
+
+  const revealPanel = () => {
+    if (!activeEvent) return;
+    const bounds = title.getBoundingClientRect();
+    const headerBottom = document.querySelector(".site-header")?.getBoundingClientRect().bottom || 0;
+    if (bounds.top < headerBottom + 16 || bounds.bottom > window.innerHeight) {
+      panel.scrollIntoView({ behavior: reducedMotionQuery.matches ? "instant" : "smooth", block: "start" });
+    }
+  };
+
+  const animatePanel = (startHeight, reveal = false) => {
+    animation?.cancel();
+    if (reducedMotionQuery.matches) {
+      finishAnimation();
+      if (reveal) revealPanel();
+      return;
+    }
+
+    const endHeight = activeEvent ? panel.getBoundingClientRect().height : 0;
+    panel.classList.add("is-animating");
+    animation = panel.animate([
+      { height: `${startHeight}px`, opacity: startHeight ? 1 : 0 },
+      { height: `${endHeight}px`, opacity: activeEvent ? 1 : 0 }
+    ], {
+      duration: 420,
+      easing: "cubic-bezier(0.2, 0.72, 0.22, 1)",
+      fill: "both"
+    });
+    const currentAnimation = animation;
+    animation.onfinish = () => {
+      if (animation !== currentAnimation) return;
+      finishAnimation();
+      if (reveal) revealPanel();
+    };
+  };
+
+  const closePanel = () => {
+    if (!activeEvent) return;
+    const startHeight = panel.getBoundingClientRect().height;
+    const previousEvent = activeEvent;
+    previousEvent.button.setAttribute("aria-expanded", "false");
+    previousEvent.card.classList.remove("is-active");
+    if (panel.contains(document.activeElement)) previousEvent.button.focus({ preventScroll: true });
+    activeEvent = null;
+    panel.inert = true;
+    animatePanel(startHeight);
+  };
+
+  const showEvent = event => {
+    if (activeEvent === event) {
+      closePanel();
+      return;
+    }
+
+    const startHeight = panel.hidden ? 0 : panel.getBoundingClientRect().height;
+    animation?.cancel();
+    animation = null;
+    if (activeEvent) {
+      activeEvent.button.setAttribute("aria-expanded", "false");
+      activeEvent.card.classList.remove("is-active");
+    }
+    activeEvent = event;
+    event.button.setAttribute("aria-expanded", "true");
+    event.card.classList.add("is-active");
+    panel.dataset.event = event.card.dataset.event;
+    title.textContent = event.card.querySelector("h3").textContent;
+    meta.textContent = Array.from(event.card.querySelectorAll(".event-meta > span"), span => span.textContent).join(" / ");
+    when.replaceChildren(event.card.querySelector(".event-when").cloneNode(true));
+    content.replaceChildren(
+      event.card.querySelector(".event-overview > p:last-child").cloneNode(true),
+      ...Array.from(event.details.querySelector(".event-description").children, paragraph => paragraph.cloneNode(true))
+    );
+    closeButton.setAttribute("aria-label", `Close details for ${title.textContent}`);
+    const previousSibling = panel.previousElementSibling;
+    positionPanel();
+    panel.hidden = false;
+    panel.inert = false;
+    title.focus({ preventScroll: true });
+    animatePanel(panel.previousElementSibling === previousSibling ? startHeight : 0, true);
+  };
+
+  cards.forEach(card => {
+    const details = card.querySelector(".event-disclosure");
+    if (!details) return;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "button event-action";
+    button.dataset.eventToggle = card.dataset.event;
+    button.innerHTML = details.querySelector("summary").innerHTML;
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-controls", panel.id);
+    details.before(button);
+    details.hidden = true;
+    const event = { card, details, button };
+    button.addEventListener("click", () => showEvent(event));
+  });
+
+  closeButton.addEventListener("click", closePanel);
+  panel.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closePanel();
+    }
+  });
+  window.addEventListener("resize", () => {
+    finishAnimation();
+    positionPanel();
+  });
+  reducedMotionQuery.addEventListener("change", finishAnimation);
+};
+
+setupEventPanel();
+
 // Expand and flip the Take Part cards into a focused modal view.
 const cardDialog = document.getElementById("expanded-card-dialog");
 const expandedCardShell = cardDialog?.querySelector(".expanded-card-shell");
