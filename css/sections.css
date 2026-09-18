@@ -334,21 +334,31 @@
 }
 
 .flagship-visual {
+  position: relative;
+  isolation: isolate;
   min-height: 650px;
   padding: 34px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   color: var(--colour-white);
+  border: 1.5px solid var(--theme-text);
+  border-radius: 28px;
+  box-shadow: 14px 14px 0 var(--colour-accent-2);
+  overflow: hidden;
+}
+
+.flagship-visual::before {
+  content: "";
+  position: absolute;
+  inset: -30px;
+  z-index: -1;
   background-image:
     linear-gradient(180deg, transparent 48%, rgba(0, 0, 0, 0.66)),
     var(--flagship-background-image);
   background-position: center;
   background-size: cover;
-  border: 1.5px solid var(--theme-text);
-  border-radius: 28px;
-  box-shadow: 14px 14px 0 var(--colour-accent-2);
-  overflow: hidden;
+  filter: blur(30px);
 }
 
 .flagship-visual strong {
@@ -441,7 +451,7 @@
 }
 
 .partner-mark:hover {
-  transform: translate(-2px, -2px) rotate(-1deg);
+  transform: translate(-2px, -2px);
   box-shadow: 9px 9px 0 var(--shadow-colour);
 }
 
