@@ -43,6 +43,8 @@
   max-height: 540px;
   object-fit: cover;
   border-radius: 16px;
+  filter: blur(30px);
+  clip-path: inset(0 round 16px);
 }
 
 .flagship-photo figcaption {
