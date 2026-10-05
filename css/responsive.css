@@ -86,10 +86,6 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .flagship-visual {
-    min-height: 540px;
-  }
-
   .feature-card:nth-child(n) {
     grid-column: span 1;
   }
@@ -115,6 +111,24 @@
 
   .brand img {
     height: 34px;
+  }
+
+  .nav {
+    gap: 4px;
+    font-size: 0.75rem;
+  }
+
+  .nav-social {
+    width: 24px;
+  }
+
+  .nav-social svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-cta {
+    padding-inline: 12px;
   }
 
   .hero h1 {
@@ -285,7 +299,6 @@
   }
 
   .flagship-visual {
-    min-height: 410px;
     padding: 24px;
     box-shadow: 8px 8px 0 var(--colour-accent-2);
   }

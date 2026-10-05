@@ -29,8 +29,8 @@
   /* Replace this URL with the final Get Involved image. */
   --support-background-image: url("../images/get_involved.jpeg");
 
-  /* Replace this URL with the final Shed 6 photograph. */
-  --flagship-background-image: url("../images/flagship.jpg");
+  /* Confirmed flagship venue: Toitū Pōneke, the hub. */
+  --flagship-background-image: url("../images/thehub.jpg");
 
   /* Cards / decorative colours */
   --card-1: var(--colour-accent-4);

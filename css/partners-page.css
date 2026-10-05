@@ -1,0 +1,91 @@
+/* ==================== Partners page ==================== */
+
+.partners-page section[id] {
+  scroll-margin-top: 110px;
+}
+
+.partners-hero {
+  min-height: auto;
+  padding-bottom: 52px;
+}
+
+.partners-intro {
+  max-width: 48ch;
+  padding-left: 28px;
+  border-left: 4px solid var(--colour-accent-5);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.partners-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.partners-page .section-heading {
+  align-items: start;
+  margin-bottom: 36px;
+}
+
+.partners-page .section-heading h2 {
+  font-size: clamp(2.25rem, 4vw, 4rem);
+}
+
+.partners-page .section-heading-copy {
+  max-width: 42ch;
+  line-height: 1.7;
+}
+
+.partner-profile {
+  min-width: 0;
+}
+
+.partner-profile h3 {
+  margin: 24px 0 8px;
+  font-size: 1.15rem;
+}
+
+.partner-profile .partner-mark {
+  --shadow-colour: var(--colour-accent-5);
+}
+
+.supporting-partners {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 36px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.supporting-partners li {
+  min-width: 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--theme-text);
+}
+
+.supporting-partners h3 {
+  margin-bottom: 0;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.partners-page a:focus-visible {
+  outline: 3px solid var(--theme-text);
+  outline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+  .supporting-partners {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .supporting-partners {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-profile + .partner-profile {
+    margin-top: 16px;
+  }
+}
