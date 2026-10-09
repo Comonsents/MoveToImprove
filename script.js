@@ -436,6 +436,10 @@ cardToggles.forEach(card => {
 
     const sourceCard = card.closest(".feature-card");
     const expandedCard = card.querySelector(".flip-card-inner").cloneNode(true);
+    const details = sourceCard.querySelector(".activity-details");
+    if (details) {
+      expandedCard.querySelector(".card-back-copy").replaceWith(details.content.cloneNode(true));
+    }
     const title = expandedCard.querySelector(".card-title");
     const closeButton = document.createElement("button");
 
@@ -477,6 +481,26 @@ cardToggles.forEach(card => {
 
 cardDialog?.addEventListener("cancel", event => {
   event.preventDefault();
+  closeExpandedCard();
+});
+
+// Close the modal before following a link to another section of this page.
+cardDialog?.addEventListener("click", event => {
+  const link = event.target.closest("a");
+  if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+  const destination = new URL(link.href, window.location.href);
+  if (destination.origin !== window.location.origin || destination.pathname !== window.location.pathname) return;
+  const target = document.getElementById(destination.hash.slice(1));
+  if (!target) return;
+
+  event.preventDefault();
+  cardDialog.addEventListener("close", () => {
+    history.pushState(null, "", destination.hash);
+    const heading = target.querySelector("h2") || target;
+    heading.setAttribute("tabindex", "-1");
+    heading.focus({ preventScroll: true });
+    target.scrollIntoView({ block: "start" });
+  }, { once: true });
   closeExpandedCard();
 });
 

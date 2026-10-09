@@ -21,36 +21,87 @@
   margin-bottom: 0;
 }
 
-.partners-page .section-heading {
-  align-items: start;
-  margin-bottom: 36px;
+.partner-category {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
+  gap: 60px;
 }
 
-.partners-page .section-heading h2 {
-  font-size: clamp(2.25rem, 4vw, 4rem);
+.partner-category h2 {
+  margin: 20px 0 24px;
+  font-size: clamp(1.8rem, 2.6vw, 2.7rem);
+  line-height: 1.05;
 }
 
-.partners-page .section-heading-copy {
+.partner-category-intro > p {
   max-width: 42ch;
+}
+
+.partner-category p {
   line-height: 1.7;
 }
 
-.partner-profile {
+.partner-category-content,
+.partner-profile,
+.partner-feature > div {
   min-width: 0;
 }
 
-.partner-profile h3 {
-  margin: 24px 0 8px;
+.partner-category h3 {
+  margin: 0 0 8px;
+  font-family: inherit;
   font-size: 1.15rem;
 }
 
-.partner-profile .partner-mark {
-  --shadow-colour: var(--colour-accent-5);
+.partner-profile h3 {
+  margin-top: 24px;
+}
+
+.partner-profile,
+.partner-feature {
+  border-top: 1px solid var(--theme-text);
+  padding-top: 24px;
+}
+
+.partner-feature {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  align-items: center;
+}
+
+.partner-event-link {
+  display: inline-flex;
+  margin-top: 16px;
+}
+
+.event-supporter {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 24px;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--theme-text);
+}
+
+.event-supporter img {
+  width: 100px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.event-supporter .partner-role {
+  margin-bottom: 8px;
+}
+
+.event-supporter p:last-child,
+.partner-feature p:last-child {
+  margin-bottom: 0;
 }
 
 .supporting-partners {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 36px;
   margin: 0;
   padding: 0;
@@ -63,10 +114,9 @@
   border-top: 1px solid var(--theme-text);
 }
 
-.supporting-partners h3 {
+.supporting-partners h3:last-child,
+.supporting-partners p:last-child {
   margin-bottom: 0;
-  font-size: 1.15rem;
-  line-height: 1.4;
 }
 
 .partners-page a:focus-visible {
@@ -75,17 +125,21 @@
 }
 
 @media (max-width: 900px) {
-  .supporting-partners {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .partner-category {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 
 @media (max-width: 560px) {
-  .supporting-partners {
+  .supporting-partners,
+  .partner-feature,
+  .partners-page .partner-grid-pair {
     grid-template-columns: 1fr;
   }
 
-  .partner-profile + .partner-profile {
-    margin-top: 16px;
+  .event-supporter {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
