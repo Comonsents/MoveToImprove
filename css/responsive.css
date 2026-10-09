@@ -307,9 +307,32 @@
     grid-template-columns: 70px 1fr;
   }
 
-  .partner-mark {
-    min-height: 100px;
-    box-shadow: 5px 5px 0 var(--shadow-colour);
+  .homepage-partner-groups {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .homepage-partner-groups > div + div {
+    padding: 24px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--theme-text);
+  }
+
+  .campaign-endorsements {
+    gap: 16px;
+  }
+
+  .campaign-endorsement + .campaign-endorsement {
+    padding-left: 16px;
+  }
+
+  .endorsement-logo,
+  .movember-endorsement {
+    height: 128px;
+  }
+
+  .campaign-endorsement .partner-role {
+    min-height: 3em;
   }
 
   .button {
@@ -339,15 +362,13 @@
   .squiggle-progress,
   .flip-card-toggle,
   .flip-card-inner,
-  .card-front::before,
-  .partner-mark {
+  .card-front::before {
     transition: none;
   }
 
   .nav a:hover,
   .button:hover,
-  .flip-card-toggle:hover,
-  .partner-mark:hover {
+  .flip-card-toggle:hover {
     transform: none;
   }
 }
