@@ -318,6 +318,16 @@
     border-top: 1px solid var(--theme-text);
   }
 
+  .homepage-partner-groups .partner-grid-flagship {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .homepage-partner-groups .partner-grid > li:last-child {
+    grid-column: 1 / -1;
+    border-left: 0;
+    border-top: 1px solid var(--theme-text);
+  }
+
   .campaign-endorsements {
     gap: 16px;
   }
@@ -347,6 +357,20 @@
 
   .footer-links {
     margin-top: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header {
+    padding-inline: 12px;
+  }
+
+  .brand img {
+    height: 30px;
+  }
+
+  .nav-cta {
+    padding-inline: 6px;
   }
 }
 

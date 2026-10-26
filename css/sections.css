@@ -486,7 +486,7 @@
 
 .homepage-partner-groups {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
   gap: 32px;
 }
 
@@ -508,8 +508,22 @@
   list-style: none;
 }
 
-.partner-grid.partner-grid-pair {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.partner-grid.partner-grid-flagship {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.partner-venue {
+  margin: 24px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--theme-text);
+}
+
+.partner-venue > * {
+  display: block;
+}
+
+.partner-venue p:last-child {
+  margin-bottom: 0;
 }
 
 .partner-mark {
@@ -530,6 +544,12 @@
 .partner-mark .partner-logo-momentum {
   max-width: 200px;
   object-fit: cover;
+}
+
+/* Preserve the supplied white Elyte artwork on a contrasting logo field. */
+.partner-mark .partner-logo-elyte {
+  padding: 12px;
+  background: var(--colour-charcoal-deep);
 }
 
 /* ==================== Support ==================== */

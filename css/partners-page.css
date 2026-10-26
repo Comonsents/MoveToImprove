@@ -75,26 +75,22 @@
   margin-top: 16px;
 }
 
-.event-supporter {
-  display: flex;
-  align-items: center;
-  gap: 24px;
+.event-supporters {
   margin-top: 24px;
   padding: 24px 0 0;
   border-top: 1px solid var(--theme-text);
 }
 
-.event-supporter img {
+.event-supporter-logo {
   width: 100px;
   height: 64px;
   object-fit: contain;
 }
 
-.event-supporter .partner-role {
+.event-supporters .partner-role {
   margin-bottom: 8px;
 }
 
-.event-supporter p:last-child,
 .partner-feature p:last-child {
   margin-bottom: 0;
 }
@@ -134,12 +130,8 @@
 @media (max-width: 560px) {
   .supporting-partners,
   .partner-feature,
-  .partners-page .partner-grid-pair {
+  .partners-page .partner-grid-flagship {
     grid-template-columns: 1fr;
   }
 
-  .event-supporter {
-    align-items: flex-start;
-    flex-direction: column;
-  }
 }
