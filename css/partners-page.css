@@ -115,6 +115,36 @@
   margin-bottom: 0;
 }
 
+.partner-name {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.partner-name > span {
+  min-width: 0;
+}
+
+.partner-inline-logo {
+  display: block;
+  flex: 0 0 auto;
+  width: auto;
+  height: 1.5625em;
+  max-width: 3.90625em;
+  object-fit: contain;
+}
+
+.partner-inline-logo-dark {
+  background: var(--theme-text);
+}
+
+/* Compensate for whitespace inside the supplied Mo Bros and BE artwork. */
+.partner-inline-logo-padded {
+  height: 3.4375em;
+  margin-block: -0.9375em;
+  margin-inline: -0.3125em;
+}
+
 .partners-page a:focus-visible {
   outline: 3px solid var(--theme-text);
   outline-offset: 4px;
