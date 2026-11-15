@@ -67,6 +67,95 @@
 .flagship-loop-starts li {
   padding: 24px 0;
   border-top: 2px solid var(--colour-accent-3);
+  overflow-wrap: anywhere;
+}
+
+.flagship-loop-starts p {
+  margin: 12px 0 0;
+}
+
+.flagship-page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  padding-block: 24px;
+  border-block: 1px solid var(--theme-text);
+  font-weight: 700;
+}
+
+.flagship-page-nav a {
+  padding-block: 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.flagship-timetable,
+.flagship-team {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flagship-timetable li,
+.flagship-team > div {
+  min-width: 0;
+  padding-top: 24px;
+  border-top: 2px solid var(--colour-accent-3);
+  overflow-wrap: anywhere;
+}
+
+.flagship-timetable h3 {
+  margin-bottom: 24px;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+.flagship-timetable dl {
+  margin: 0;
+}
+
+.flagship-timetable dl > div + div {
+  margin-top: 18px;
+}
+
+.flagship-timetable dt {
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.flagship-timetable dd {
+  margin: 0;
+}
+
+.flagship-guide-details {
+  margin-top: 36px;
+  padding-block: 24px;
+  border-block: 1px solid var(--theme-text);
+}
+
+.flagship-guide-details summary {
+  padding-block: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.flagship-guide-details summary:focus-visible {
+  outline: 3px solid var(--theme-text);
+  outline-offset: 4px;
+}
+
+.flagship-team h3 {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 560px) {
+  .flagship-timetable,
+  .flagship-team {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .flagship-loop-starts time {
